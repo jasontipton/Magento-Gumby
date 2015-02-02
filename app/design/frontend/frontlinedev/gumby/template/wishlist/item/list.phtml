@@ -1,0 +1,37 @@
+<?php
+/**
+ * package      frontlinedev
+ * theme        gumby
+ * developer    Jason Tipton - Frontlinedev.com
+ * contact      jason@frontlinedev.com
+ */
+?>
+<?php
+    $columns = $this->getColumns();
+?>
+<div class="data-table" id="wishlist-table">    
+    <?php if (count($this->getItems())): ?>
+        <?php foreach ($this->getItems() as $item): ?>
+            <div class="row" id="item_<?php echo $item->getId();?>">
+                <?php foreach ($columns as $column): ?>
+                    <?php $column->setItem($item); echo $column->toHtml($item);?>
+                <?php endforeach; ?>
+            </div>
+            <hr />
+        <?php endforeach ?>
+    <?php else: ?>
+        <p class="wishlist-empty"><?php echo $this->__('This Wishlist has no Items');?></p>
+    <?php endif; ?>
+</div>
+<?php foreach ($columns as $column): ?>
+    <?php echo $column->getAdditionalHtml();?>
+<?php endforeach; ?>
+<script type="text/javascript">
+//<![CDATA[
+    decorateTable('wishlist-table');
+
+<?php foreach ($columns as $column): ?>
+    <?php echo $column->getJs();?>
+<?php endforeach; ?>
+//]]>
+</script>

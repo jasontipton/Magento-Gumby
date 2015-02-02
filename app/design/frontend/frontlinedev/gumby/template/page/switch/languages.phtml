@@ -1,0 +1,35 @@
+<?php
+/**
+ * package      frontlinedev
+ * theme        gumby
+ * developer    Jason Tipton - Frontlinedev.com
+ * contact      jason@frontlinedev.com
+ */
+?>
+<?php
+/**
+ * Language switcher template
+ *
+ * @see Mage_Page_Block_Switch
+ */
+?>
+<?php if(count($this->getStores())>1): ?>
+    <?php /* Language selector modal */ ?>
+    <div class="modal" id="modal-language">
+        <div class="content">
+            <a class="close switch" gumby-trigger="|#modal-language"><i class="icon-cancel" /></i></a>
+			<div class="form-language">
+			    <div class="field">
+			        <ul>
+			        	<h4><?php echo $this->__('Your Language') ?></h4>
+					    <p><?php echo $this->__('Our store supports multiple languages.  Choose your language to view the translated site.') ?></p>
+					    <?php foreach ($this->getStores() as $_lang): ?>
+					        <li><a href="<?php echo $_lang->getCurrentUrl() ?>"><?php echo $this->escapeHtml($_lang->getName()) ?></a></li>
+					    <?php endforeach; ?>
+					    </select>
+			        </ul>
+			    </div>
+			</div>
+        </div>
+    </div>
+<?php endif; ?>

@@ -1,0 +1,1357 @@
+/*
+We highly recommend you use SASS and write your custom styles in sass/gumby/_custom.scss.
+However, if you prefer to write traditional CSS below is a copy of Magento's default/blank/css/styles.css and base/default/css/widgets.css
+*/
+
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     default_blank
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/* Reset ================================================================================= */
+* {}
+
+body          {}
+
+img           {}
+
+a             {}
+a:hover       {}
+:focus        {}
+
+/* Headings */
+h1            {}
+h2            {}
+h3            {}
+h4            {}
+h5            {}
+h6            {}
+
+/* Forms */
+form          {}
+fieldset      {}
+legend        {}
+
+/* Table */
+table         {}
+caption,th,td {}
+
+/* Content */
+strong        {}
+address       {}
+cite          {}
+q,
+blockquote    {}
+q:before,
+q:after       {}
+small,big     {}
+sup           {}
+
+/* Lists */
+ul,ol         {}
+
+/* Tools */
+.hidden       { display:block !important; border:0 !important; margin:0 !important; padding:0 !important; font-size:0 !important; line-height:0 !important; width:0 !important; height:0 !important; overflow:hidden !important; }
+.nobr         { white-space:nowrap !important; }
+.wrap         { white-space:normal !important; }
+.a-left       { text-align:left !important; }
+.a-center     { text-align:center !important; }
+.a-right      { text-align:right !important; }
+.v-top        { vertical-align:top; }
+.v-middle     { vertical-align:middle; }
+.f-left,
+.left         { float:left !important; }
+.f-right,
+.right        { float:right !important; }
+.f-none       { float:none !important; }
+.f-fix        { float:left; width:100%; }
+.no-display   { display:none !important; }
+.no-margin    { margin:0 !important; }
+.no-padding   { padding:0 !important; }
+.no-bg        { background:none !important; }
+/* ======================================================================================= */
+
+
+/* Layout ================================================================================ */
+.wrapper {}
+.page {}
+.page-print {}
+.page-empty {}
+.page-popup {}
+.main-container {}
+.main {}
+
+/* Base Columns */
+.col-left {}
+.col-main {}
+.col-right {}
+
+/* 1 Column Layout */
+.col1-layout .col-main {}
+
+/* 2 Columns Layout */
+.col2-left-layout .col-main {}
+.col2-right-layout .col-main {}
+
+/* 3 Columns Layout */
+.col3-layout .col-main {}
+.col3-layout .col-wrapper {}
+.col3-layout .col-wrapper .col-main {}
+
+/* Content Columns */
+.col2-set .col-1 {}
+.col2-set .col-2 {}
+.col2-set .col-narrow {}
+.col2-set .col-wide {}
+
+.col3-set .col-1 {}
+.col3-set .col-2 {}
+.col3-set .col-3 {}
+
+.col4-set .col-1 {}
+.col4-set .col-2 {}
+.col4-set .col-3 {}
+.col4-set .col-4 {}
+/* ======================================================================================= */
+
+
+/* Global Styles ========================================================================= */
+/* Form Elements */
+input,select,textarea,button {}
+input.input-text,select,textarea {}
+input.input-text,textarea {}
+select {}
+select option {}
+select.multiselect option {}
+select.multiselect option:last-child {}
+textarea {}
+input.radio {}
+input.checkbox {}
+input.qty { text-align: center; min-width: 40px; }
+button.button::-moz-focus-inner { padding:0; border:0; } /* FF Fix */
+button.button { -webkit-border-fit:lines; } /* <- Safari & Google Chrome Fix */
+button.button {}
+button.button span {}
+button.button span span {}
+button.disabled {}
+button.disabled span {}
+
+button.btn-checkout span {}
+button.btn-checkout.no-checkout {}
+
+p.control input.checkbox,
+p.control input.radio {}
+/* Form Highlight */
+/*input.input-text:focus,select:focus,textarea:focus {}*/
+/*.highlight { background:#efefef; }*/
+
+/* Form lists */
+/* Grouped fields */
+.form-list li {}
+.form-list label {}
+.form-list label.required {}
+.form-list label.required em {}
+.form-list li.control label {}
+.form-list li.control input.radio,
+.form-list li.control input.checkbox {}
+.form-list li.control .input-box {}
+.form-list .input-box {}
+.form-list .field {}
+.form-list input.input-text {}
+.form-list textarea {}
+.form-list select {}
+.form-list li.wide .input-box {}
+.form-list li.wide input.input-text {}
+.form-list li.wide textarea {}
+.form-list li.wide select {}
+.form-list li.additional-row {}
+.form-list li.additional-row .btn-remove {}
+.form-list .input-range input.input-text {}
+/* Customer */
+.form-list .customer-name-prefix .input-box,
+.form-list .customer-name-suffix .input-box,
+.form-list .customer-name-prefix-suffix .input-box,
+.form-list .customer-name-prefix-middlename .input-box,
+.form-list .customer-name-middlename-suffix .input-box,
+.form-list .customer-name-prefix-middlename-suffix .input-box {}
+
+.form-list .name-prefix {}
+.form-list .name-prefix select {}
+.form-list .name-prefix input.input-text {}
+
+.form-list .name-suffix {}
+.form-list .name-suffix select {}
+.form-list .name-suffix input.input-text {}
+
+.form-list .name-middlename {}
+.form-list .name-middlename input.input-text {}
+
+.form-list .customer-name-prefix-middlename-suffix .name-firstname,
+.form-list .customer-name-prefix-middlename .name-firstname {}
+.form-list .customer-name-prefix-middlename-suffix .name-firstname input.input-text,
+.form-list .customer-name-prefix-middlename .name-firstname input.input-text {}
+.form-list .customer-name-prefix-middlename-suffix .name-lastname {}
+.form-list .customer-name-prefix-middlename-suffix .name-lastname input.input-text {}
+
+.form-list .customer-name-prefix-suffix .name-firstname {}
+.form-list .customer-name-prefix-suffix .name-lastname {}
+.form-list .customer-name-prefix-suffix .name-firstname input.input-text,
+.form-list .customer-name-prefix-suffix .name-lastname input.input-text {}
+
+.form-list .customer-name-prefix-suffix .name-firstname {}
+.form-list .customer-name-prefix-suffix .name-lastname {}
+.form-list .customer-name-prefix-suffix .name-firstname input.input-text,
+.form-list .customer-name-prefix-suffix .name-lastname input.input-text {}
+
+.form-list .customer-name-prefix .name-firstname,
+.form-list .customer-name-middlename .name-firstname {}
+
+.form-list .customer-name-suffix .name-lastname,
+.form-list .customer-name-middlename .name-firstname,
+.form-list .customer-name-middlename-suffix .name-firstname,
+.form-list .customer-name-middlename-suffix .name-lastname {}
+
+.form-list .customer-name-prefix .name-firstname input.input-text,
+.form-list .customer-name-suffix .name-lastname input.input-text,
+.form-list .customer-name-middlename .name-firstname input.input-text,
+.form-list .customer-name-middlename-suffix .name-firstname input.input-text,
+.form-list .customer-name-middlename-suffix .name-lastname input.input-text {}
+
+.form-list .customer-dob .dob-month,
+.form-list .customer-dob .dob-day,
+.form-list .customer-dob .dob-year {}
+.form-list .customer-dob input.input-text {}
+.form-list .customer-dob label {}
+.form-list .customer-dob .dob-day,
+.form-list .customer-dob .dob-month {}
+.form-list .customer-dob .dob-day input.input-text,
+.form-list .customer-dob .dob-month input.input-text {}
+.form-list .customer-dob .dob-year {}
+.form-list .customer-dob .dob-year input.input-text {}
+
+.buttons-set {}
+.buttons-set .back-link {}
+.buttons-set button.button {}
+.buttons-set p.required {}
+
+.buttons-set-order {}
+
+.fieldset {}
+.fieldset .legend {}
+
+/* Form Validation */
+.validation-advice { color: #f00; }
+.validation-failed { border:1px dashed #f00 !important; background:#faebe7 !important; }
+.validation-passed {}
+p.required { font-size:10px; text-align:right; color:#f00; }
+/* Expiration date and CVV number validation fix */
+.v-fix {}
+.v-fix .validation-advice {}
+
+/* Global Messages  */
+.success { color:#3d6611; font-weight:bold; }
+.error { color:#f00; font-weight:bold; }
+.notice { color:#ccc; }
+
+.messages,
+.messages ul {}
+.messages {}
+.messages li {}
+.messages li li {}
+.error-msg,
+.success-msg,
+.note-msg,
+.notice-msg { border-style:solid !important; border-width:1px !important; background-position:10px 9px !important; background-repeat:no-repeat !important; min-height:24px !important; padding:8px 8px 8px 32px !important; font-size:11px !important; font-weight:bold !important; }
+.error-msg { border-color:#ca3838; background-color:#df8989; color:#7b2121; }
+.success-msg { border-color:#58c026; background-color:#91e26a; color:#316b15; }
+.note-msg,
+.notice-msg { border-color:#3085d6; background-color:#85b7e7; color:#1a5186; }
+
+/* BreadCrumbs */
+.breadcrumbs {}
+.breadcrumbs li {}
+
+/* Page Heading */
+.page-title {}
+.page-title h1,
+.page-title h2 {}
+.page-title .separator {}
+.page-title .link-rss {}
+.title-buttons {}
+.title-buttons h1,
+.title-buttons h2,
+.title-buttons h3,
+.title-buttons h4,
+.title-buttons h5,
+.title-buttons h6 {}
+
+.subtitle,
+.sub-title {}
+
+/* Pager */
+.pager {}
+.pager .amount {}
+.pager .limiter {}
+.pager .pages {}
+.pager .pages ol { display:inline; }
+.pager .pages li { display:inline; }
+.pager .pages .current {}
+
+/* Sorter */
+.sorter {}
+.sorter .view-mode {}
+.sorter .sort-by {}
+.sorter .link-feed {}
+
+/* Toolbar */
+.toolbar {}
+.toolbar .pager {}
+.toolbar .sorter {}
+.toolbar-bottom {}
+
+/* Data Table */
+.data-table {}
+.data-table th {}
+.data-table td {}
+.data-table thead {}
+.data-table tbody {}
+.data-table tfoot {}
+.data-table tr.first {}
+.data-table tr.last {}
+.data-table tr.odd {}
+.data-table tr.even {}
+.data-table tbody.odd {}
+.data-table tbody.odd td {}
+.data-table tbody.even {}
+.data-table tbody.even td {}
+.data-table tbody.odd tr.border td,
+.data-table tbody.even tr.border td {}
+.data-table th .tax-flag {}
+.data-table td.label,
+.data-table th.label {}
+.data-table td.value {}
+
+/* Shopping cart total summary row expandable to details */
+tr.summary-total {}
+tr.summary-total td {}
+tr.summary-total .summary-collapse { float:right; text-align:right; padding-left:20px; background:url(../../images/bkg_collapse.gif) 0 4px no-repeat; cursor:pointer; }
+tr.show-details .summary-collapse { background-position:0 -53px; }
+tr.show-details td {}
+tr.summary-details td {}
+tr.summary-details-first td {}
+tr.summary-details-excluded {}
+
+/* Shopping cart tax info */
+.cart-tax-info {}
+.cart-tax-info,
+.cart-tax-info .cart-price {}
+.cart-tax-total { display:block; padding-right:20px; background:url(../../images/bkg_collapse.gif) 100% 4px no-repeat; cursor:pointer; }
+.cart-tax-info .price,
+.cart-tax-total .price {}
+.cart-tax-total-expanded { background-position:100% -53px; }
+
+/* Class: std - styles for admin-controlled content */
+.std .subtitle {}
+.std ol.ol {}
+.std ul.disc {}
+.std dl dt {}
+.std dl dd {}
+.std ul,
+.std ol,
+.std dl,
+.std p,
+.std address,
+.std blockquote {}
+.std ul {}
+.std ol {}
+.std ul ul {}
+.std ul ul,
+.std ol ol,
+.std ul ol,
+.std ol ul {}
+.std dt {}
+.std dd {}
+.std blockquote {}
+.std address {}
+.std b,
+.std strong {}
+.std i,
+.std em {}
+
+/* Misc */
+.links li { display:inline; }
+.links li.first {}
+.links li.last {}
+
+.link-cart {}
+.link-wishlist {}
+.link-reorder {}
+.link-compare {}
+.link-print {}
+.link-rss {}
+.btn-remove {}
+.btn-remove2 {}
+.btn-edit    {}
+
+.cards-list dt {}
+.cards-list .offset {}
+
+
+.separator {}
+
+.divider {}
+
+/* Noscript Notice */
+.noscript { border-width:0 0 1px; background:#ffff90; font-size:12px; line-height:1.25; text-align:center; color:#2f2f2f; }
+.noscript .notice-inner {}
+.noscript p {}
+
+/* Demo Notice */
+.demo-notice { margin:0; padding:6px 10px; background:#d75f07; font-size:12px; line-height:1.15; text-align:center; color:#fff; }
+
+/* Cookie Notice */
+.notice-cookie { border-bottom:1px solid #cfcfcf; background:#ffff90; font-size:12px; line-height:1.25; text-align:center; color:#2f2f2f; }
+.notice-cookie .notice-inner {}
+.notice-cookie .notice-inner p {}
+.notice-cookie .notice-inner .actions {}
+
+/* ======================================================================================= */
+
+
+/* Header ================================================================================ */
+.logo {}
+.header-container {}
+.header {}
+.header .logo {}
+.header .logo strong {}
+.header h1.logo {}
+.header .welcome-msg {}
+.header .welcome-msg a {}
+.header .links {}
+.header .form-search {}
+.header .form-search .search-autocomplete {}
+.header .form-search .search-autocomplete ul {}
+.header .form-search .search-autocomplete li {}
+.header .form-search .search-autocomplete li .amount {}
+.header .form-search .search-autocomplete li.selected {}
+.header .form-language {}
+.header-container .top-container {}
+
+/********** < Navigation */
+.nav-container {}
+#nav {}
+
+/* All Levels */
+#nav li {}
+#nav li.over {}
+#nav li.parent {}
+#nav li a {}
+#nav li a:hover {}
+#nav li a span {}
+#nav li ul a span {}
+
+/* 1st Level */
+#nav li {}
+#nav li a {}
+#nav li a:hover {}
+#nav li.over a,
+#nav li.active a {}
+
+/* 2nd Level */
+#nav ul,
+#nav div {}
+#nav div ul {}
+
+/* 3rd+ leven */
+#nav ul ul,
+#nav ul div {}
+
+#nav ul li {}
+#nav ul li.last {}
+#nav ul li a {}
+#nav ul li a:hover {}
+#nav ul li.active > a,
+#nav ul li.over > a {}
+
+/* Show menu */
+#nav li ul.shown-sub,
+#nav li div.shown-sub {}
+#nav li .shown-sub ul.shown-sub,
+#nav li .shown-sub li div.shown-sub {}
+/********** Navigation > */
+/* ======================================================================================= */
+
+
+/* Sidebar =============================================================================== */
+.block {}
+.block .block-title {}
+.block .block-title strong {}
+.block .block-title strong span {}
+.block .block-title a {}
+.block .block-subtitle {}
+.block .block-content {}
+.block .block-content li.item {}
+.block .btn-remove,
+.block .btn-edit {}
+.block .actions {}
+.block .actions a {}
+.block .empty {}
+
+.block li.odd {}
+.block li.even {}
+
+/* Mini Products List */
+.mini-products-list li {}
+.mini-products-list .product-image {}
+.mini-products-list .product-details {}
+.mini-products-list .product-details h4 {}
+.block-cart .mini-products-list .product-details .product-name,
+.block-cart .mini-products-list .product-details .nobr small {}
+.block-cart .mini-products-list .product-details .nobr {}
+
+/* Block: Account */
+.block-account {}
+
+/* Block: Currency Switcher */
+.block-currency {}
+.block-currency select {}
+
+/* Block: Layered Navigation */
+.block-layered-nav {}
+.block-layered-nav dt {}
+.block-layered-nav .currently {}
+.block-layered-nav .btn-remove {}
+
+/* Block: Cart */
+.block-cart {}
+.block-cart .summary {}
+.block-cart .amount {}
+.block-cart .subtotal {}
+.block-cart .actions .paypal-logo {}
+.block-cart .actions .paypal-logo .paypal-or {}
+
+/* Block: Wishlist */
+.block-wishlist {}
+
+/* Block: Related */
+.block-related {}
+.block-related li {}
+.block-related input.checkbox {}
+.block-related .product {}
+.block-related .product .product-image {}
+.block-related .product .product-details {}
+
+/* Block: Compare Products */
+.block-compare {}
+.block-compare li {}
+
+/* Block: Recently Viewed */
+.block-viewed {}
+
+/* Block: Recently Compared */
+.block-compared {}
+
+/* Block: Poll */
+.block-poll label {}
+.block-poll input.radio {}
+.block-poll .label {}
+.block-poll li {}
+.block-poll .actions {}
+.block-poll .answer {}
+.block-poll .votes {}
+
+/* Block: Tags */
+.block-tags ul,
+.block-tags li { display:inline; }
+
+/* Block: Subscribe */
+.block-subscribe {}
+
+/* Block: Reorder */
+.block-reorder {}
+.block-reorder li {}
+.block-reorder input.checkbox {}
+.block-reorder .product-name {}
+
+/* Block: Banner */
+.block-banner {}
+.block-banner .block-content {}
+
+/* Block: Login */
+.block-login label {}
+.block-login input.input-text {}
+
+/* Paypal */
+.sidebar .paypal-logo {}
+.sidebar .paypal-logo a {}
+.paypal-express-review .info-set.col2-set {}
+/* ======================================================================================= */
+
+
+/* Category Page ========================================================================= */
+.category-title {}
+.category-image {}
+.category-image img {}
+.category-description {}
+.category-products {}
+
+/* View Type: Grid */
+.products-grid {}
+.products-grid.last {}
+.products-grid li.item {}
+.products-grid .product-image {}
+.products-grid .product-name {}
+.products-grid .product-name a {}
+.products-grid .price-box {}
+.products-grid .availability {}
+.products-grid .actions {}
+.col2-left-layout .products-grid,
+.col2-right-layout .products-grid {}
+.col1-layout .products-grid {}
+
+/* View Type: List */
+.products-list li.item {}
+.products-list li.item.last {}
+.products-list .product-image {}
+.products-list .product-shop {}
+.products-list .product-name {}
+.products-list .product-name a {}
+.products-list .price-box {}
+.products-list .availability {}
+.products-list .desc {}
+.products-list .desc .link-learn {}
+.products-list .add-to-links {}
+.products-list .add-to-links li {}
+.products-list .add-to-links .separator {}
+/* ======================================================================================= */
+
+
+/* Product View ========================================================================== */
+/* Rating */
+.no-rating { margin:0; }
+
+.ratings { font-size:11px; line-height:1.25; margin:7px 0; }
+.ratings strong { float:left; margin:1px 3px 0 0; }
+.ratings .rating-links { margin:0; }
+.ratings .rating-links .separator { margin:0 2px; }
+.ratings dt {}
+.ratings dd {}
+.rating-box { width:69px; height:13px; font-size:0; line-height:0; background:url(../../images/bkg_rating.gif) 0 0 repeat-x; text-indent:-999em; overflow:hidden; }
+.rating-box .rating { float:left; height:13px; background:url(../../images/bkg_rating.gif) 0 100% repeat-x; }
+.ratings .rating-box { float:left; margin-right:3px; }
+.ratings .amount {}
+
+.ratings-table th,
+.ratings-table td {}
+.ratings-table th {}
+
+/* Availability */
+.availability {}
+.availability span {}
+.availability.in-stock span {}
+.availability.out-of-stock span {}
+
+.availability-only {}
+.availability-only a { background:url(../../images/i_availability_only_arrow.gif) 100% 0 no-repeat; cursor:pointer; padding-right:15px; }
+.availability-only .expanded { background-position:100% -15px; }
+.availability-only strong {}
+
+.availability-only-details {}
+.availability-only-details th {}
+.availability-only-details td {}
+.availability-only-details tr.odd td.last {}
+
+/* Email to a Friend */
+.email-friend {}
+
+/* Alerts */
+.alert-price {}
+.alert-stock {}
+
+/********** < Product Prices */
+.price {}
+
+.price-box {}
+.price-box .price {}
+
+/* Regular price */
+.regular-price {}
+.regular-price .price {}
+
+/* Old price */
+.old-price {}
+.old-price .price-label {}
+.old-price .price {}
+
+/* Special price */
+.special-price {}
+.special-price .price-label {}
+.special-price .price {}
+
+/* Minimal price (as low as) */
+.minimal-price {}
+.minimal-price .price-label {}
+
+.minimal-price-link {}
+.minimal-price-link .label {}
+.minimal-price-link .price {}
+
+/* Excluding tax */
+.price-excluding-tax {}
+.price-excluding-tax .label {}
+.price-excluding-tax .price {}
+
+/* Including tax */
+.price-including-tax {}
+.price-including-tax .label {}
+.price-including-tax .price {}
+
+/* Configured price */
+.configured-price {}
+.configured-price .price-label {}
+.configured-price .price {}
+
+/* FPT */
+.weee {}
+.weee .price {}
+
+/* Excl tax (for order tables) */
+.price-excl-tax  {}
+.price-excl-tax .label {}
+.price-excl-tax .price {}
+
+/* Incl tax (for order tables) */
+.price-incl-tax {}
+.price-incl-tax .label {}
+.price-incl-tax .price {}
+
+/* Price range */
+.price-from {}
+.price-from .price-label {}
+
+.price-to {}
+.price-to .price-label {}
+
+/* Price notice next to the options */
+.price-notice {}
+.price-notice .price {}
+
+/* Price as configured */
+.price-as-configured {}
+.price-as-configured .price-label {}
+
+.price-box-bundle {}
+/********** Product Prices > */
+
+/* Tier Prices */
+.tier-prices .price {}
+.tier-prices .benefit {}
+
+.tier-prices-grouped {}
+
+/* Add to Links */
+.add-to-links .separator {}
+
+/* Add to Cart */
+.add-to-cart label {}
+.add-to-cart .qty {}
+.add-to-cart button.button {}
+.add-to-cart .paypal-logo {}
+.add-to-cart .paypal-logo .paypal-or {}
+.product-view .add-to-cart .paypal-logo {}
+
+/* Add to Links + Add to Cart */
+.add-to-box {}
+.add-to-box .add-to-cart {}
+.add-to-box .or {}
+.add-to-box .add-to-links {}
+
+
+.product-view {}
+
+.product-essential {}
+
+.product-collateral .box-collateral {}
+
+/* Product Images */
+.product-view .product-img-box {}
+.col3-layout .product-view .product-img-box {}
+.product-view .product-img-box .product-image {}
+.product-view .product-img-box .product-image-zoom {}
+.product-view .product-img-box .product-image-zoom img {}
+.product-view .product-img-box .zoom-notice {}
+.product-view .product-img-box .zoom {}
+.product-view .product-img-box .zoom.disabled {}
+.product-view .product-img-box .zoom #track {}
+.product-view .product-img-box .zoom #handle {}
+.product-view .product-img-box .zoom .btn-zoom-out {}
+.product-view .product-img-box .zoom .btn-zoom-in {}
+.product-view .product-img-box .more-views ul {}
+.product-view .product-img-box .more-views li {}
+
+.product-image-popup { margin:0 auto; }
+.product-image-popup .buttons-set {}
+.product-image-popup .nav {}
+.product-image-popup .image {}
+.product-image-popup .image-label {}
+
+/* Product Shop */
+.product-view .product-shop {}
+.col1-layout .product-view .product-shop {}
+.col3-layout .product-view .product-shop {}
+.product-view .product-name {}
+.product-view .short-description {}
+
+/* Product Options */
+.product-options {}
+.product-options dt label {}
+.product-options dt .qty-holder {}
+.product-options dt .qty-holder label {}
+.product-options dt .qty-disabled {}
+.product-options dd {}
+.product-options dl.last dd.last {}
+.product-options dd input.input-text {}
+.product-options dd input.datetime-picker {}
+.product-options dd .time-picker {}
+.product-options dd textarea {}
+.product-options dd select {}
+.product-options .options-list {}
+.product-options .options-list input.radio {}
+.product-options .options-list input.checkbox {}
+.product-options .options-list .label {}
+.product-options ul.validation-failed {}
+.product-options p.required {}
+
+.product-options-bottom {}
+.product-options-bottom .price-box {}
+
+/* Grouped Product */
+.product-view .grouped-items-table {}
+
+/* Block: Description */
+.product-view .box-description {}
+
+/* Block: Additional */
+.product-view .box-additional {}
+
+/* Block: Upsell */
+.product-view .box-up-sell {}
+.product-view .box-up-sell .products-grid td {}
+
+/* Block: Tags */
+.product-view .box-tags {}
+.product-view .box-tags .form-add label {}
+.product-view .box-tags .form-add .input-box {}
+.product-view .box-tags .form-add input.input-text {}
+.product-view .box-tags .form-add p {}
+
+/* Block: Reviews */
+.product-view .box-reviews {}
+.product-view .box-reviews .form-add {}
+
+/* Send a Friend */
+.send-friend {}
+/* ======================================================================================= */
+
+
+/* Content Styles ================================================================= */
+.product-name {}
+.product-name a {}
+
+/* Product Tags */
+.tags-list li { display:inline; }
+
+/* Advanced Search */
+.advanced-search {}
+.advanced-search-amount {}
+.advanced-search-summary {}
+
+/* CMS Home Page */
+.cms-home .subtitle {}
+.cms-index-index .subtitle {}
+
+/* Sitemap */
+.page-sitemap .links {}
+.page-sitemap .links a {}
+.page-sitemap .links a:hover {}
+.page-sitemap .sitemap {}
+.page-sitemap .sitemap a {}
+.page-sitemap .sitemap li {}
+.page-sitemap .sitemap li.level-0 {}
+.page-sitemap .sitemap li.level-0 a {}
+
+/* RSS */
+.rss-title h1 {}
+.rss-table .link-rss {}
+/* ======================================================================================= */
+
+
+/* Shopping Cart ========================================================================= */
+.cart {}
+
+/* Checkout Types */
+.cart .checkout-types {}
+.cart .title-buttons .checkout-types li {}
+.cart .checkout-types .paypal-or {}
+.cart .totals .checkout-types .paypal-or {}
+
+/* Shopping Cart Table */
+.cart-table .item-msg {}
+
+/* Shopping Cart Collateral boxes */
+.cart .cart-collaterals {}
+.cart .cart-collaterals .col2-set {}
+
+.cart .crosssell {}
+.cart .crosssell h2 {}
+.cart .crosssell .product-image {}
+.cart .crosssell .product-details {}
+.cart .crosssell li.item {}
+
+/* Discount Codes & Estimate Shipping and Tax Boxes */
+.cart .discount,
+.cart .shipping {}
+
+/* Shopping Cart Totals */
+.cart .totals {}
+.cart .totals table {}
+.cart .totals table th,
+.cart .totals table td {}
+.cart .totals table th {}
+.cart .totals table tfoot th {}
+
+/* Options Tool Tip */
+.item-options dt { font-weight:bold; font-style:italic; }
+.item-options dd { padding-left:10px; }
+.truncated { cursor:help; }
+.truncated a.dots { cursor:help; }
+.truncated a.details { cursor:help; }
+.truncated .truncated_full_value { position:relative; z-index:999; }
+.truncated .truncated_full_value .item-options { position:absolute; top:-99999em; left:-99999em; z-index:999; width:250px; padding:8px; background-color:#f6f6f6; }
+.truncated .truncated_full_value .item-options > p { font-weight:bold; text-transform:uppercase; }
+.truncated .show .item-options { top:-20px; left:50%; }
+.col-left .truncated .show .item-options { left:30px; top:7px; }
+.col-right .truncated .show .item-options  { left:-240px; top:7px; }
+/* ======================================================================================= */
+
+
+/* Checkout ============================================================================== */
+/********** < Common Checkout Styles */
+/* Shipping and Payment methods */
+.sp-methods dt {}
+.sp-methods .price {}
+.sp-methods .form-list {}
+.sp-methods select.month {}
+.sp-methods select.year {}
+.sp-methods input.cvv {}
+
+.sp-methods .checkmo-list li {}
+.sp-methods .checkmo-list label {}
+.sp-methods .checkmo-list address {}
+
+.sp-methods .centinel-logos a {}
+.sp-methods .centinel-logos img {}
+
+.sp-methods .release-amounts {}
+.sp-methods .release-amounts button {}
+
+.please-wait { float:left; }
+.please-wait img {}
+.cvv-what-is-this {}
+
+/* Tooltip */
+.tool-tip {}
+.tool-tip .btn-close {}
+.tool-tip .btn-close a {}
+.tool-tip .tool-tip-content {}
+
+/* Gift Messages */
+.gift-messages {}
+.gift-messages-form {}
+.gift-messages-form {}
+.gift-messages-form label {}
+.gift-messages-form h4 {}
+.gift-messages-form .whole-order {}
+.gift-messages-form .item {}
+.gift-messages-form .item .product-img-box {}
+.gift-messages-form .item .product-image {}
+.gift-messages-form .item .number {}
+.gift-messages-form .item .details {}
+.gift-messages-form .item .details .product-name {}
+
+.gift-message-link { display:block; background:url(../../images/bkg_collapse.gif) 0 4px no-repeat; padding-left:20px; }
+.gift-message-link.expanded { background-position:0 -53px; }
+.gift-message-row {}
+.gift-message-row .btn-close {}
+.gift-message dt strong {}
+
+/* Checkout Agreements */
+.checkout-agreements {}
+.checkout-agreements li {}
+.checkout-agreements .agreement-content {}
+.checkout-agreements .agree {}
+
+/* Centinel */
+.centinel {}
+.centinel .authentication { background:#fff; }
+.centinel .authentication iframe { width:99%; height:400px; background:transparent !important; margin:0 !important; padding:0 !important; border:0 !important; }
+
+/* Generic Info Set */
+.info-set {}
+/********** Common Checkout Styles > */
+
+/* One Page Checkout */
+.block-progress {}
+.block-progress dt {}
+.block-progress dt.complete,
+.block-progress dd.complete {}
+
+.opc {}
+.opc li.section {}
+
+.opc .buttons-set.disabled button.button { display:none; }
+.opc .buttons-set .please-wait {}
+
+.opc .step-title { background-color:#f6f6f6; padding:0 5px; text-align:right; }
+.opc .step-title .number { float:left; line-height:22px; margin-right:5px; }
+.opc .step-title h2 { float:left; }
+.opc .step-title a { display:none; }
+
+.opc .allow .step-title { cursor:pointer; }
+/*.opc .allow .step-title a { display:block; }*/
+
+.opc .active {}
+.opc .active .step-title { background-color:#ccc; cursor:default; }
+/*.opc .active .step-title a { display:none; }*/
+
+.opc .step {}
+.opc .step .tool-tip {}
+
+.opc .order-review {}
+.opc .order-review .authentication {}
+.opc .order-review .warning-message {}
+
+/* Multiple Addresses Checkout */
+.checkout-progress { padding:0 50px; margin:10px 0; }
+.checkout-progress li { float:left; width:20%; border-top:5px solid #ccc; text-align:center; color:#ccc; }
+.checkout-progress li.active { border-top-color:#000; color:#000; }
+
+.multiple-checkout {}
+.multiple-checkout .tool-tip {}
+.multiple-checkout .grand-total {}
+.multiple-checkout .grand-total big {}
+.multiple-checkout .grand-total .price {}
+/* ======================================================================================= */
+
+
+/* Account Login/Create Pages ============================================================ */
+.account-login {}
+.account-login .new-users {}
+.account-login .registered-users {}
+
+.account-create {}
+/* Account Login/Create Pages ============================================================ */
+
+/* Captcha */
+.captcha-note  {}
+.captcha-image { float:left; position:relative; }
+.captcha-img { border:1px solid #ccc; }
+.registered-users .captcha-image    {}
+#checkout-step-login .captcha-image {}
+.captcha-reload { position:absolute; top:2px; right:2px;}
+.captcha-reload.refreshing  { animation:rotate 1.5s infinite linear; -webkit-animation:rotate 1.5s infinite linear; -moz-animation:rotate 1.5s infinite linear; }
+
+@-webkit-keyframes rotate {
+    0% { -webkit-transform:rotate(0); }
+    0% { -webkit-transform:rotate(-360deg); }
+}
+@-moz-keyframes rotate {
+    0% { -moz-transform:rotate(0); }
+    0% { -moz-transform:rotate(-360deg); }
+}
+@keyframes rotate {
+    0% { transform:rotate(0); }
+    0% { transform:rotate(-360deg); }
+}
+
+/* Remember Me Popup ===================================================================== */
+.window-overlay {}
+
+.remember-me label {}
+.remember-me-popup {}
+.remember-me-popup h3 {}
+.remember-me-popup .remember-me-popup-head {}
+.remember-me-popup .remember-me-popup-head .remember-me-popup-close {}
+.remember-me-popup .remember-me-popup-body {}
+.remember-me-popup .remember-me-popup-body a {}
+/* Remember Me Popup ===================================================================== */
+
+
+/* My Account ============================================================================= */
+.my-account .title-buttons .link-rss {}
+
+/********** < Dashboard */
+.dashboard {}
+.dashboard .welcome-msg {}
+
+/* Block: Recent Orders */
+.dashboard .box-recent {}
+
+/* Block: Account Information */
+.dashboard .box-info {}
+
+/* Block: Reviews */
+.dashboard .box-reviews .number {}
+.dashboard .box-reviews .details {}
+
+/* Block: Tags */
+.dashboard .box-tags .number {}
+.dashboard .box-tags .details {}
+/********** Dashboard > */
+
+/* Address Book */
+.addresses-list {}
+.addresses-list-additional li.item {}
+
+/* Order View */
+.order-info {}
+.order-info dt,
+.order-info dd,
+.order-info ul,
+.order-info li { display:inline; }
+.order-info dt {}
+
+.order-date {}
+
+.order-info-box {}
+
+.order-items {}
+
+.order-additional {}
+/* Order Gift Message */
+.gift-message dt strong {}
+.gift-message dd {}
+/* Order Comments */
+.order-about dt {}
+.order-about dd {}
+
+.tracking-table {}
+.tracking-table th {}
+
+.tracking-table-popup {}
+.tracking-table-popup th {}
+.tracking-table-popup th,
+.tracking-table-popup td {}
+
+/* Order Print Pages */
+.page-print .print-head {}
+.page-print .print-head img {}
+.page-print .print-head address {}
+/* Price Rewrites */
+.page-print .gift-message-link { display:none; }
+.page-print .price-excl-tax,
+.page-print .price-incl-tax {}
+.page-print .cart-price,
+.page-print .price-excl-tax .label,
+.page-print .price-incl-tax .label,
+.page-print .price-excl-tax .price,
+.page-print .price-incl-tax .price { display:inline; }
+
+/* My Reviews */
+.product-review .product-img-box {}
+.product-review .product-img-box .product-image {}
+.product-review .product-img-box .label {}
+.product-review .product-img-box .ratings .rating-box {}
+.product-review .product-details {}
+.product-review .product-name {}
+.product-review h3 {}
+.product-review .ratings-table {}
+.product-review dt {}
+.product-review dd {}
+/* ======================================================================================= */
+
+
+/* Footer ================================================================================ */
+.footer {}
+.footer p {}
+.footer address {}
+.footer ul {}
+.footer ul li {}
+.footer-container .bottom-container {}
+/* ======================================================================================= */
+
+
+/* Clears ================================================================================ */
+.clearer:after,
+.header-container:after,
+.header-container .top-container:after,
+.header:after,
+.header .quick-access:after,
+#nav:after,
+.main:after,
+.footer:after,
+.footer-container .bottom-container:after,
+.col-main:after,
+.col2-set:after,
+.col3-set:after,
+.col4-set:after,
+.search-autocomplete li:after,
+.block .block-content:after,
+.block .actions:after,
+.block li.item:after,
+.block-poll li:after,
+.block-layered-nav .currently li:after,
+.page-title:after,
+.products-grid:after,
+.products-list li.item:after,
+.box-account .box-head:after,
+.dashboard .box .box-title:after,
+.box-reviews li.item:after,
+.box-tags li.item:after,
+.pager:after,
+.sorter:after,
+.ratings:after,
+.add-to-box:after,
+.add-to-cart:after,
+.product-essential:after,
+.product-collateral:after,
+.product-view .product-img-box .more-views ul:after,
+.product-view .product-shop .short-description:after,
+.product-view .box-description:after,
+.product-view .box-tags .form-add:after,
+.product-options .options-list li:after,
+.product-options-bottom:after,
+.product-review:after,
+.cart:after,
+.cart-collaterals:after,
+.cart .crosssell li.item:after,
+.opc .step-title:after,
+.checkout-progress:after,
+.multiple-checkout .place-order:after,
+.group-select li:after,
+.form-list li:after,
+.form-list .field:after,
+.buttons-set:after,
+.page-print .print-head:after,
+.advanced-search-summary:after,
+.gift-messages-form .item:after,
+.send-friend .form-list li p:after { display:block; content:"."; clear:both; font-size:0; line-height:0; height:0; overflow:hidden; }
+/* ======================================================================================= */
+
+
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/* Widgets =============================================================================== */
+.widget {}
+.widget .widget-title {}
+.widget .widget-title h2 {}
+
+.widget .mini-products-images-list .product-image {}
+.widget .mini-products-images-list li.item {}
+
+/* Widget: Catalog New Proructs List */
+.widget-new-products {}
+.col-main .widget-new-products {}
+.widget-new-products .products-grid .product-image,
+.widget-new-products .products-list .product-image {}
+.widget-new-products .products-list .product-shop {}
+.sidebar .widget-new-products .block {}
+.sidebar .widget-new-products .block-title strong {}
+
+/* Widget: Recently Viewed Proructs */
+.widget-viewed {}
+.col-main .widget-viewed {}
+.widget-viewed .products-grid .product-image,
+.widget-viewed .products-list .product-image {}
+.widget-viewed .products-list .product-shop {}
+.sidebar .widget-viewed .block {}
+.sidebar .widget-viewed .block-title strong {}
+
+/* Widget: Recently Compared Proructs */
+.widget-compared {}
+.col-main .widget-compared {}
+.widget-compared .products-grid .product-image,
+.widget-compared .products-list .product-image {}
+.widget-compared .products-list .product-shop {}
+.sidebar .widget-compared .block {}
+.sidebar .widget-compared .block-title strong {}
+
+/* Widget: CMS Static Block */
+.widget-static-block {}
+.sidebar .widget-static-block {}
+
+/* Widgets: Links Common Styles */
+.top-container .widget a {}
+
+.bottom-container .widget a {}
+
+/* Widget: Catalog Product Link */
+.widget-product-link-inline {}
+
+.col-main .widget-product-link {}
+.col-main .widget-product-link a {}
+
+.sidebar .widget-product-link {}
+.sidebar .widget-product-link a {}
+
+/* Widget: Catalog Category Link */
+.widget-category-link-inline {}
+
+.col-main .widget-category-link {}
+.col-main .widget-category-link a {}
+
+.sidebar .widget-category-link {}
+.sidebar .widget-category-link a {}
+
+/* Widget: CMS Page Link */
+.widget-cms-link-inline {}
+
+.col-main .widget-cms-link {}
+.col-main .widget-cms-link a {}
+
+.sidebar .widget-cms-link {}
+.sidebar .widget-cms-link a {}
+/* ======================================================================================= */

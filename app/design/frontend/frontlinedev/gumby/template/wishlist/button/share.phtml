@@ -1,0 +1,12 @@
+<?php
+/**
+ * package      frontlinedev
+ * theme        gumby
+ * developer    Jason Tipton - Frontlinedev.com
+ * contact      jason@frontlinedev.com
+ */
+?>
+
+<?php if($this->getWishlist()->getItemsCount()): ?>
+	<div class="pretty medium info btn"><button type="submit" name="save_and_share" title="<?php echo $this->__('Share Wishlist') ?>" class="button btn-share"><?php echo $this->__('Share Wishlist') ?></button></div>
+<?php endif;?>

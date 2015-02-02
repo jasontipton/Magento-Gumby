@@ -1,0 +1,30 @@
+<?php 
+/**
+ * package      frontlinedev
+ * theme        gumby
+ * developer    Jason Tipton - Frontlinedev.com
+ * contact      jason@frontlinedev.com
+ */
+
+/*
+  code originally posted Nick Heeringa at: http://trafficmotion.com/add-open-graph-cards-products-magento/
+*/ ?>
+
+<?php
+$_helper = $this->helper('catalog/output');
+$_product = $this->getProduct();
+$currency = Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol();
+if($_product):
+?>
+<!-- BEGIN OPEN GRAPH CARDS -->
+<meta property="og:site_name" content="<?php echo Mage::app()->getStore()->getName(); ?>" />
+<meta property="og:type" content="og:product" />
+<meta property="og:title" content="<?php echo $_product->getName() ?>" />
+<meta property="og:image" content="<?php echo $_product->getImageUrl() ?>" />
+<meta property="og:description" content="<?php echo $this->htmlEscape($_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description')) ?>" />
+<meta property="og:url" content="<?php echo $_product->getUrlModel()->getUrl($_product, array('_ignore_category' => true)) ?>" />
+<meta property="og:price:amount" content="<?php echo Mage::helper('tax')->getPrice($_product, $_product->getFinalPrice(), true); ?>" />
+<meta property="og:price:currency" content="<?php echo Mage::app()->getStore()->getCurrentCurrencyCode() ?>" />
+<meta property="og:availability" content="<?php echo ($_product->isAvailable() ? 'in stock' : 'out of stock') ?>" />
+<!-- END OPEN GRAPH CARDS -->
+<?php endif; ?>

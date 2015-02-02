@@ -1,0 +1,72 @@
+<?php
+/**
+ * package      frontlinedev
+ * theme        gumby
+ * developer    Jason Tipton - Frontlinedev.com
+ * contact      jason@frontlinedev.com
+ */
+?>
+<?php
+/**
+ * @see Mage_Page_Block_Template_Links
+ */
+?>
+
+
+<?php $_links = $this->getLinks(); ?>
+<?php $_currentUrl = Mage::helper('core/url')->getCurrentUrl(); ?>
+<?php if(count($_links)>0): ?>
+<ul class="links"<?php if($this->getName()): ?> id="<?php echo $this->getName() ?>"<?php endif;?>>
+    <?php foreach($_links as $_link): ?>
+        <?php if ($_link instanceof Mage_Core_Block_Abstract):?>
+            <?php echo $_link->toHtml() ?>
+        <?php else: ?>
+            <?php 
+                $pageLink = $_link->getUrl();
+
+                $pageUri = $_SERVER['REQUEST_URI'];
+                $activeClass = false;
+
+                switch (true){
+                    case strpos($pageLink,'/customer/account/login') !== false:
+                        $activeID = "top-login";
+                        if (strstr($pageUri,'/customer/account/login')) {
+                            $activeClass = true;
+                        }
+                        break;
+                    case strpos($pageLink,'/customer/account/logout') !== false:
+                        $activeID = "top-logout";                   
+                        break;                    
+                    case strpos($pageLink,'/customer/account/') !== false:
+                        $activeID = "top-account";
+                        if ((strstr($pageUri,'/customer/') && strstr($pageUri,'/customer/account/login')===false && strstr($pageUri,'/customer/account/logoutSuccess/')===false) || strstr($pageUri,'/sales/order/history/') || strstr($pageUri,'/sales/billing_agreement/') || strstr($pageUri,'/sales/recurring_profile/') || strstr($pageUri,'/oauth/customer_token/') || strstr($pageUri,'/newsletter/manage/')) {
+                            $activeClass = true;
+                        }        
+                        break;
+                    case strpos($pageLink,'/checkout/cart/') !== false:
+                        $activeID = "top-cart";
+                        if (strstr($pageUri,'/checkout/cart/')) {
+                            $activeClass = true;
+                        }                    
+                        break;
+                    case strpos($pageLink,'/checkout/') !== false:
+                        $activeID = "top-checkout";
+                        if (strstr($pageUri,'/checkout/') && strstr($pageUri,'/checkout/cart/')===false) {
+                            $activeClass = true;
+                        }                    
+                        break; 
+                    default:
+                        $activeID = "";
+                        $activeClass = false;
+                }
+                
+            ?>
+            <li id="<?php echo $activeID; ?>" class="<?php echo ($activeClass ? 'active' : ''); ?> <?php echo $_link->getLiParams() ?>"><?php echo $_link->getBeforeText() ?>
+            	<div class="medium metro rounded btn">
+            		<a href="<?php echo $_link->getUrl() ?>" title="<?php echo $_link->getTitle() ?>" <?php echo $_link->getAParams() ?>><?php echo $_link->getLabel() ?></a><?php echo $_link->getAfterText() ?>
+            	</div>
+            </li>
+        <?php endif;?>
+    <?php endforeach; ?>
+</ul>
+<?php endif; ?>

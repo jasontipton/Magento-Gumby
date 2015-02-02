@@ -1,0 +1,51 @@
+<?php
+/**
+ * package      frontlinedev
+ * theme        gumby
+ * developer    Jason Tipton - Frontlinedev.com
+ * contact      jason@frontlinedev.com
+ */
+?>
+
+<?php
+/**
+ * Template for displaying product price at catalog and sidebars
+ *
+ * @var $this Mage_Catalog_Block_Product_Price
+ */
+?>
+<?php
+    /** @var $_product Mage_Catalog_Model_Product */
+    $_product = $this->getProduct();
+    $_msrpPrice = "";
+?>
+    <div class="price-box map-info">
+    <?php $_price = $this->helper('tax')->getPrice($_product, $_product->getMsrp()) ?>
+        <?php if ($_product->getMsrp()): ?>
+            <?php $_msrpPrice = $this->helper('core')->currency($_product->getMsrp(),true,true) ?>
+            <span class="old-price" id="product-price-<?php echo $_product->getId() ?><?php echo $this->getIdSuffix() ?>"><?php echo $_msrpPrice ?></span>
+        <?php endif; ?>
+        <?php $helpLinkId = 'msrp-click-' . $_product->getId() . $this->helper('core')->getRandomString(20); ?>
+        <a href="#" id="<?php echo($helpLinkId);?>" class="switch map-link" gumby-trigger="#map-popup"><?php echo $this->__('Click for price'); ?></a>
+        <script type="text/javascript">
+            <?php if ($this->helper('catalog')->isShowPriceOnGesture($_product)): ?>
+                var newLink = Catalog.Map.addHelpLink(
+                        $('<?php echo $helpLinkId ?>'),
+                        "<?php echo $this->escapeHtml($_product->getName()) ?>",
+                        <?php echo $this->getRealPriceJs($_product) ?>,
+                        '<?php echo $_msrpPrice ?>',
+                        "<?php echo $_product->isSalable() ? $_product->getAddToCartUrl() : '' ?>"
+                );
+                newLink.product_id = '<?php echo $_product->getId() ?>';
+            <?php else: ?>
+                Catalog.Map.addHelpLink(
+                        $('<?php echo $helpLinkId ?>'),
+                        "<?php echo $this->escapeHtml($_product->getName()) ?>",
+                        null,
+                        null,
+                        "<?php echo $_product->getProductUrl() ?>"
+                );
+            <?php endif; ?>
+
+        </script>
+    </div>

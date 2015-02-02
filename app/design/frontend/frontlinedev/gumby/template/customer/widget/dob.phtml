@@ -1,0 +1,49 @@
+<?php
+/**
+ * package      frontlinedev
+ * theme        gumby
+ * developer    Jason Tipton - Frontlinedev.com
+ * contact      jason@frontlinedev.com
+ */
+
+/**
+ * @see Mage_Customer_Block_Widget_Dob
+ */
+?>
+<label for="<?php echo $this->getFieldId('month')?>"<?php if ($this->isRequired()) echo ' class="required"' ?>><?php if ($this->isRequired()) echo '<em>*</em>' ?><?php echo $this->__('Date of Birth') ?></label>
+<div class="input-box customer-dob">
+<?php
+    $this->setDateInput('d',
+        '<span class="dob-day">
+            <!--<label for="' . $this->getFieldId('day') . '" class="inline">' . $this->__('DD') . '</label>-->
+            <input type="text" id="' . $this->getFieldId('day') . '" name="' . $this->getFieldName('day') . '" value="' . $this->getDay() . '" title="' . $this->__('Day') . '" class="xnarrow text input input-text validate-custom" placeholder="' . $this->__('DD') . '"' . $this->getFieldParams() . ' />
+
+         </span>'
+    );
+
+    $this->setDateInput('m',
+        '<span class="dob-month">
+            <!--<label for="' . $this->getFieldId('month') . '" class="inline">' . $this->__('MM')  . '</label>-->
+            <input type="text" id="' . $this->getFieldId('month') . '" name="' . $this->getFieldName('month') . '" value="' . $this->getMonth()  . '" title="' . $this->__('Month')  . '" class="xnarrow text input input-text validate-custom" placeholder="' . $this->__('MM')  . '"' . $this->getFieldParams()  . ' />
+         </span>'
+    );
+
+    $this->setDateInput('y',
+        '<span class="dob-year">
+            <!--<label for="' . $this->getFieldId('year') . '" class="inline">' . $this->__('YYYY')  . '</label>-->
+            <input type="text" id="' . $this->getFieldId('year') . '" name="' . $this->getFieldName('year') . '" value="' . $this->getYear()  . '" title="' . $this->__('Year')  . '" class="xnarrow text input input-text validate-custom" placeholder="' . $this->__('YYYY')  . '"' . $this->getFieldParams()  . ' />
+         </span>'
+    );
+?>
+    <?php echo $this->getSortedDateInputs() ?>
+    <div class="dob-full" style="display:none;">
+        <input type="hidden" id="<?php echo $this->getFieldId('dob')?>" name="<?php echo $this->getFieldName('dob')?>" />
+    </div>
+
+    <div class="validation-advice" style="display:none;"></div>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+    var customer_dob = new Varien.DOB('.customer-dob', <?php echo $this->isRequired() ? 'true' : 'false' ?>, '<?php echo $this->getDateFormat() ?>');
+//]]>
+</script>

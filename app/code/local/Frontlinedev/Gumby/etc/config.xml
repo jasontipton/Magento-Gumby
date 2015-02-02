@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<config>  
+    <modules>  
+        <Frontlinedev_Gumby>  
+            <version>1.0.0</version>  
+        </Frontlinedev_Gumby>  
+    </modules>  
+    <global>  
+        <blocks>  
+            <catalog>  
+                <rewrite>  
+                        <product_view_options_type_select>Frontlinedev_Gumby_Block_Product_View_Options_Type_Select</product_view_options_type_select>  
+
+                        <product_view_options_type_date>Frontlinedev_Gumby_Block_Product_View_Options_Type_Date</product_view_options_type_date>  
+                </rewrite>                
+            </catalog>  
+        </blocks>  
+    </global>  
+</config> 

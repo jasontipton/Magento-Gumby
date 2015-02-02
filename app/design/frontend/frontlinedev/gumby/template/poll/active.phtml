@@ -1,0 +1,51 @@
+<?php
+/**
+ * package      frontlinedev
+ * theme        gumby
+ * developer    Jason Tipton - Frontlinedev.com
+ * contact      jason@frontlinedev.com
+ */
+?>
+<?php if(isset($poll)) : ?>
+<script type="text/javascript">
+//<![CDATA[
+    function validatePollAnswerIsSelected()
+    {
+        var options = $$('input.poll_vote');
+        for( i in options ) {
+            if( options[i].checked == true ) {
+                return true;
+            }
+        }
+        return false;
+    }
+//]]>
+</script>
+
+
+<div class="block block-poll">
+    <div class="block-title">
+        <strong><span><?php echo $this->__('Community Poll') ?></span></strong>
+    </div>
+    <form id="pollForm" action="<?php echo $action ?>" method="post" onsubmit="return validatePollAnswerIsSelected();">
+        <div class="block-content">
+            <p class="block-subtitle"><?php echo $this->escapeHtml($poll->getPollTitle()); ?></p>
+            <?php if( $poll_answers ): ?>
+            <ul id="poll-answers">
+                <li class="field">
+                <?php foreach( $poll_answers as $answer ): ?>
+                    <label class="radio" for="vote_<?php echo $answer->getId() ?>">
+                        <input name="vote" value="3" type="radio" class="radio poll_vote" id="vote_<?php echo $answer->getId() ?>" value="<?php echo $answer->getAnswerId() ?>">
+                        <span></span> <?php echo $this->escapeHtml($answer->getAnswerTitle()) ?>
+                    </label>
+                <?php endforeach; ?>
+                </li>
+            </ul>
+            <?php endif; ?>
+            <div class="actions">
+                <div class="pretty small info btn"><button type="submit" title="<?php echo $this->__('Vote') ?>" class="button"><?php echo $this->__('Vote') ?></button></div>
+            </div>
+        </div>
+    </form>
+</div>
+<?php endif; ?>

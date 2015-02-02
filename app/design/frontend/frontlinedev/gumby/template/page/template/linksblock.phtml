@@ -1,0 +1,39 @@
+<?php
+/**
+ * package      frontlinedev
+ * theme        gumby
+ * developer    Jason Tipton - Frontlinedev.com
+ * contact      jason@frontlinedev.com
+ */
+?>
+<?php
+/**
+ * @see Mage_Page_Block_Template_Links_Block
+ */
+?>
+
+<?php 
+    $pageLink = $this->getLinkUrl();
+
+    $pageUri = $_SERVER['REQUEST_URI'];
+    $activeClass = false;
+
+    switch (true){
+        case strpos($pageLink,'/wishlist') !== false:
+            $activeID = "top-wishlist";
+            if (strstr($pageUri,'/wishlist/')) {
+                $activeClass = true;
+            }
+            break;
+        default:
+            $activeID = "";
+            $activeClass = false;
+    }
+    
+?>
+
+<li id="<?php echo $activeID; ?>" class="<?php echo ($activeClass ? 'active' : ''); ?> <?php echo $this->getLiParams() ?>"><?php echo $this->getBeforeText() ?>
+	<div class="medium metro rounded btn">
+		<a href="<?php echo $this->getLinkUrl() ?>" title="<?php echo $this->getTitle() ?>" <?php echo $this->getAParams() ?>><?php echo $this->getLabel() ?></a><?php echo $this->getAfterText() ?>
+	</div>
+</li>

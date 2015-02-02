@@ -1,0 +1,22 @@
+<?php
+/**
+ * package      frontlinedev
+ * theme        gumby
+ * developer    Jason Tipton - Frontlinedev.com
+ * contact      jason@frontlinedev.com
+ */
+?>
+<div class="block-subscribe">
+    <form action="<?php echo $this->getFormActionUrl() ?>" method="post" id="newsletter-validate-detail">  
+        <div class="append field">
+            <label class="" for="newsletter"><?php echo $this->__('Sign Up for Our Newsletter') ?></label>
+            <input type="email" name="email" id="newsletter" title="<?php echo $this->__('Sign up for our newsletter') ?>" class="wide email input input-text required-entry validate-email" placeholder="youremail@address.com" />
+            <div class="medium primary btn"><button type="submit" title="<?php echo $this->__('Subscribe') ?>" class="button"><?php echo $this->__('Subscribe') ?></button></div>
+        </div>
+    </form>
+    <script type="text/javascript">
+    //<![CDATA[
+        var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
+    //]]>
+    </script>
+</div>

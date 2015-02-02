@@ -1,0 +1,42 @@
+<?php
+/**
+ * package      frontlinedev
+ * theme        gumby
+ * developer    Jason Tipton - Frontlinedev.com
+ * contact      jason@frontlinedev.com
+ */
+
+/* @var $this Mage_Wishlist_Block_Customer_Wishlist_Item_Column_Cart */
+/* @var Mage_Wishlist_Model_Item $item */
+$item = $this->getItem();
+$product = $item->getProduct();
+$options = $this->getChild('customer.wishlist.item.options')
+    ->setItem($item)
+    ->getConfiguredOptions();
+?>
+<div class="row">
+    <div class="nine columns cart-cell">
+    <?php echo $this->getPriceHtml($product, empty($options));?>
+        <div class="field add-to-cart-alt">
+        <?php if ($item->canHaveQty() && $item->getProduct()->isVisibleInSiteVisibility()): ?>
+            <input type="text" class="xnarrow text input input-text qty validate-not-negative-number" name="qty[<?php echo $item->getId() ?>]" value="<?php echo $this->getAddToCartQty($item) * 1 ?>" />
+        <?php endif; ?>
+        <?php if ($product->isSaleable()): ?>
+            <div class="pretty medium primary btn"><button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="addWItemToCart(<?php echo $item->getId()?>);"><i class="icon-basket"></i><?php echo $this->__('Add to Cart') ?></div>
+        <?php else: ?>
+            <?php if ($product->getIsSalable()): ?>
+                <p class="availability in-stock"><span><?php echo $this->__('In stock') ?></span></p>
+            <?php else: ?>
+                <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+            <?php endif; ?>
+        <?php endif; ?>
+        </div>
+    </div>
+    <div class="three columns">
+        <?php foreach($this->getSortedChildren() as $childName):?>
+            <?php echo $this->getChildHtml($childName, false);?>
+        <?php endforeach;?>
+        <?php if ($product->isVisibleInSiteVisibility()): ?>
+            <p><a class="link-edit" href="<?php echo $this->getItemConfigureUrl($item) ?>"><?php echo $this->__('Edit') ?></a></p>
+        <?php endif ?>
+

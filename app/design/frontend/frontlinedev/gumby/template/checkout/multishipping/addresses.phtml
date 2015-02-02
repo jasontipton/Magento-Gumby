@@ -1,0 +1,73 @@
+<?php
+/**
+ * package      frontlinedev
+ * theme        gumby
+ * developer    Jason Tipton - Frontlinedev.com
+ * contact      jason@frontlinedev.com
+ */
+?>
+<?php
+/**
+ * Ship to multiple address template
+ *
+ * @see Mage_Checkout_Block_Multishipping_Addresses
+ */
+?>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<form id="checkout_multishipping_form" action="<?php echo $this->getPostActionUrl() ?>" method="post">
+    <div class="multiple-checkout">
+        <div class="page-title title-buttons">
+            <h1><?php echo $this->__('Ship to Multiple Addresses') ?></h1>
+            <div class="pretty medium info btn"><button data-action="add-new-customer-address" type="button" title="<?php echo $this->__('Enter a New Address') ?>" class="button" onclick="$('add_new_address_flag').value=1; $('checkout_multishipping_form').submit();"><?php echo $this->__('Enter a New Address') ?></button></div>
+        </div>
+        <input type="hidden" name="continue" value="0" id="can_continue_flag" />
+        <input type="hidden" name="new_address" value="0" id="add_new_address_flag" />
+        <h2><?php echo $this->__('Please select shipping address for applicable items') ?></h2>
+        <div class="data-table clearfix" id="multiship-addresses-table">
+            <div class="row shaded">
+                <div class="three columns">
+                    <h4><?php echo $this->__('Product') ?></h4>
+                </div>
+                <div class="two columns field a-center">
+                    <h4><?php echo $this->__('Qty') ?></h4>
+                </div>
+                <div class="six columns field">
+                    <h4><?php echo $this->__('Send To') ?></h4>
+                </div>
+                <div class="one columns">
+                </div>
+            </div>
+
+            <div>
+            <?php foreach ($this->getItems() as $_index => $_item): ?>
+                <?php if ($_item->getQuoteItem()) :?>
+                <div class="row">
+                    <div class="three columns">
+                        <?php echo $this->getItemHtml($_item->getQuoteItem())?>
+                    </div>
+                    <div class="two columns field a-center">
+                        <input type="text" name="ship[<?php echo $_index ?>][<?php echo $_item->getQuoteItemId() ?>][qty]" value="<?php echo $this->escapeHtml($_item->getQty()) ?>" class="narrow text input input-text qty a-center" />
+                    </div>
+                    <div class="six columns field">
+                        <?php if ($_item->getProduct()->getIsVirtual()): echo $this->__('Shipping selection is not applicable.'); else: ?>
+                            <div class="picker">
+                                <?php echo $this->getAddressesHtmlSelect($_item, $_index); ?>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                    <div class="one columns a-center">
+                        <a href="<?php echo $this->getItemDeleteUrl($_item) ?>" title="<?php echo $this->__('Remove Item') ?>" class="btn-remove2"><i class="icon-cancel-squared"></i></a>
+                    </div>
+                </div>
+                <?php endif; ?>
+                <hr />
+            <?php endforeach; ?>
+            </div>
+            <div class="pretty medium info btn f-right"><button type="submit" title="<?php echo $this->__('Update Qty &amp; Addresses') ?>" class="button" onclick="$('can_continue_flag').value=0"><?php echo $this->__('Update Qty &amp; Addresses') ?></button></div>        
+        </div>
+        <div class="buttons-set">
+            <p class="back-link f-left"><a href="<?php echo $this->getBackUrl() ?>"><small>&laquo; </small><?php echo $this->__('Back to Shopping Cart') ?></a></p>
+            <div class="pretty medium info btn f-right"><button type="submit" data-action="checkout-continue-shipping" title="<?php echo $this->__('Continue to Shipping Information') ?>" class="button<?php if ($this->isContinueDisabled()):?> disabled<?php endif; ?>" onclick="$('can_continue_flag').value=1"<?php if ($this->isContinueDisabled()):?> disabled="disabled"<?php endif; ?>><?php echo $this->__('Continue to Shipping Information') ?></button></div>
+        </div>
+    </div>
+</form>

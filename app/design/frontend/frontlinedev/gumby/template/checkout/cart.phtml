@@ -1,0 +1,111 @@
+<?php
+/**
+ * package      frontlinedev
+ * theme        gumby
+ * developer    Jason Tipton - Frontlinedev.com
+ * contact      jason@frontlinedev.com
+ */
+?>
+<?php
+/**
+ * Shopping cart template
+ *
+ * @see Mage_Checkout_Block_Cart
+ */
+?>
+<div class="cart">
+    <div class="row">
+        <div class="twelve columns page-title title-buttons">
+            <h1><?php echo $this->__('Shopping Cart') ?></h1>
+            <?php if(!$this->hasError()): ?>
+            <ul class="checkout-types f-right">
+            <?php foreach ($this->getMethods('top_methods') as $method): ?>
+                <?php if ($methodHtml = $this->getMethodHtml($method)): ?>
+                <li><?php echo $methodHtml; ?></li>
+                <?php endif; ?>
+            <?php endforeach; ?>
+            </ul>
+            <?php endif; ?>
+        </div>
+    </div>
+    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+    <?php echo $this->getChildHtml('form_before') ?>
+    <div class="row">
+        <div class="twelve columns">
+            <form action="<?php echo $this->getUrl('checkout/cart/updatePost') ?>" method="post">
+                <?php echo $this->getBlockHtml('formkey'); ?>
+                <fieldset>
+                    <div id="shopping-cart-table" class="data-table cart-table">
+
+                        <!-- list products -->
+                        <?php foreach($this->getItems() as $_item): ?>
+                            <?php echo $this->getItemHtml($_item) ?>
+                            <hr />
+                        <?php endforeach ?>
+
+                        <div class="row">
+                            <div class="twelve columns">
+                                <?php if($this->getContinueShoppingUrl()): ?>
+                                    <div class="pretty medium primary btn" ><button type="button" title="<?php echo $this->__('Continue Shopping') ?>" class="button btn-continue" onclick="setLocation('<?php echo $this->getContinueShoppingUrl() ?>')"><?php echo $this->__('Continue Shopping') ?></button></div>
+                                <?php endif; ?>
+
+                            <div class="pretty medium info btn"><button type="submit" name="update_cart_action" value="update_qty" title="<?php echo $this->__('Update Shopping Cart'); ?>" class="button btn-update"><?php echo $this->__('Update Cart'); ?></button></div>
+
+
+                            <div class="pretty medium info btn"><button type="submit" name="update_cart_action" value="empty_cart" title="<?php echo $this->__('Clear Shopping Cart'); ?>" class="button btn-empty" id="empty_cart_button"><?php echo $this->__('Clear Cart'); ?></button></div>
+
+                                <!--[if lt IE 8]>
+                                <input type="hidden" id="update_cart_action_container" />
+                                <script type="text/javascript">
+                                //<![CDATA[
+                                    Event.observe(window, 'load', function()
+                                    {
+                                        // Internet Explorer (lt 8) does not support value attribute in button elements
+                                        $emptyCartButton = $('empty_cart_button');
+                                        $cartActionContainer = $('update_cart_action_container');
+                                        if ($emptyCartButton && $cartActionContainer) {
+                                            Event.observe($emptyCartButton, 'click', function()
+                                            {
+                                                $emptyCartButton.setAttribute('name', 'update_cart_action_temp');
+                                                $cartActionContainer.setAttribute('name', 'update_cart_action');
+                                                $cartActionContainer.setValue('empty_cart');
+                                            });
+                                        }
+
+                                    });
+                                //]]>
+                                </script>
+                                <![endif]-->
+                            </div>
+                        </div>
+
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <?php echo $this->getChildHtml('crosssell') ?>
+    </div>
+    <div class="row cart-collaterals">
+        <div class="eight columns">
+            <?php /* Extensions placeholder */ ?>
+            <?php echo $this->getChildHtml('checkout.cart.extra') ?>
+            <?php echo $this->getChildHtml('coupon') ?>
+            <?php if (!$this->getIsVirtual()): echo $this->getChildHtml('shipping'); endif; ?>
+        </div>
+        <div class="four columns totals">
+            <h2><?php echo $this->__('Totals') ?></h2>
+            <?php echo $this->getChildHtml('totals'); ?>
+            <?php if(!$this->hasError()): ?>
+            <ul class="checkout-types">
+            <?php foreach ($this->getMethods('methods') as $method): ?>
+                <?php if ($methodHtml = $this->getMethodHtml($method)): ?>
+                <li><?php echo $methodHtml; ?></li>
+                <?php endif; ?>
+            <?php endforeach; ?>
+            </ul>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,68 @@
+<?php
+/**
+ * package      frontlinedev
+ * theme        gumby
+ * developer    Jason Tipton - Frontlinedev.com
+ * contact      jason@frontlinedev.com
+ */
+?>
+<?php
+/**
+ * One page checkout payment methods
+ *
+ * @var $this Mage_Checkout_Block_Onepage_Payment_Methods
+ */
+?>
+
+<?php
+    $methods = $this->getMethods();
+    $oneMethod = count($methods) <= 1;
+?>
+<?php if (empty($methods)): ?>
+    <li>
+        <?php echo $this->__('No Payment Methods') ?>
+    </li>
+<?php else:
+    foreach ($methods as $_method):
+        $_code = $_method->getCode();
+?>
+    <li class="field">
+    <?php if(!$oneMethod): ?>
+        <label class="radio" for="p_method_<?php echo $_code ?>">
+            <input id="p_method_<?php echo $_code ?>" value="<?php echo $_code ?>" type="radio" name="payment[method]" title="<?php echo $this->escapeHtml($_method->getTitle()) ?>" onclick="payment.switchMethod('<?php echo $_code ?>')" <?php if($this->getSelectedMethodCode()==$_code): ?> checked="checked"<?php endif; ?> class="radio" />
+            <span onclick="payment.switchMethod('<?php echo $_code ?>')"></span>
+            <p onclick="payment.switchMethod('<?php echo $_code ?>')"><?php echo $this->escapeHtml($this->getMethodTitle($_method)) ?> <?php echo $this->getMethodLabelAfterHtml($_method) ?></p>
+        </label>
+    <?php else: ?>
+        <label class="radio" for="p_method_<?php echo $_code ?>">
+            <span class="no-display"><input id="p_method_<?php echo $_code ?>" value="<?php echo $_code ?>" type="radio" name="payment[method]" checked="checked" class="radio" /></span>
+            <span></span>
+            <p><?php echo $this->escapeHtml($this->getMethodTitle($_method)) ?> <?php echo $this->getMethodLabelAfterHtml($_method) ?></p>
+            <?php $oneMethod = $_code; ?>
+        </label>
+    <?php endif; ?>
+    </li>
+    <?php if ($html = $this->getPaymentMethodFormHtml($_method)): ?>
+    <div>
+        <?php echo $html; ?>
+    </div>
+    <?php endif; ?>
+<?php endforeach;
+    endif;
+?>
+<?php echo $this->getChildChildHtml('additional'); ?>
+<script>
+    // reload Gumby radio buttons due to Onepage Checkout AJAX
+    if (typeof Gumby != 'undefined') {
+        Gumby.initialize(['radiobtn'], true);
+    }
+</script>
+<script type="text/javascript">
+    //<![CDATA[
+    <?php echo $this->getChildChildHtml('scripts'); ?>
+    payment.init();
+    <?php if (is_string($oneMethod)): ?>
+    payment.switchMethod('<?php echo $oneMethod ?>');
+        <?php endif; ?>
+    //]]>
+</script>

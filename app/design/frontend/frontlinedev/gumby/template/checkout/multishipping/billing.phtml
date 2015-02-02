@@ -1,0 +1,87 @@
+<?php
+/**
+ * package      frontlinedev
+ * theme        gumby
+ * developer    Jason Tipton - Frontlinedev.com
+ * contact      jason@frontlinedev.com
+ */
+?>
+<?php
+/**
+ * Multishipping checkout billing information
+ *
+ * @see Mage_Checkout_Block_Multishipping_Billing
+ */
+?>
+<div class="multiple-checkout">
+    <div class="page-title">
+        <h1><?php echo $this->__('Billing Information') ?></h1>
+    </div>
+    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+    <script src="<?php echo Mage::getBaseUrl('js') ?>varien/payment.js" type="text/javascript"></script>
+    <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="multishipping-billing-form">
+        <div class="col2-set">
+            <div class="col-1 col-narrow">
+                <div class="box">
+                    <div class="box-title">
+                        <h2><?php echo $this->__('Billing Address') ?> <span class="separator">|</span> <a href="<?php echo $this->getSelectAddressUrl() ?>"><?php echo $this->__('Change') ?></a></h2>
+                    </div>
+                    <div class="box-content">
+                        <?php $_address=$this->getAddress() ?>
+                        <address><?php echo $_address->format('html') ?></address>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2 col-wide">
+                <div class="box">
+                    <div class="box-title">
+                        <h2><?php echo $this->__('Payment Method') ?></h2>
+                    </div>
+                    <div class="box-content">
+                        <div class="tool-tip modal" id="payment-tool-tip-modal">
+                            <div class="content">
+                                <a href="#" class="close switch f-right" gumby-trigger="|#payment-tool-tip-modal" title="<?php echo $this->__('Close') ?>"><i class="icon-cancel"></i></a>
+                                <div class="tool-tip-content"><img src="<?php echo $this->getSkinUrl('images/cvv.gif') ?>" alt="<?php echo $this->__('Card Verification Number Visual Reference') ?>" title="<?php echo $this->__('Card Verification Number Visual Reference') ?>" /></div>
+                            </div>
+                        </div>
+                        <!-- Payment methods forms list -->
+                        <dl class="sp-methods">
+                        <?php
+                            $_methods       = $this->getMethods();
+                            $_methodsCount  = count($_methods);
+                        ?>
+                        <?php foreach ($_methods as $_method): $_code = $_method->getCode() ?>
+                            <dt class="field">
+                                <label class="radio" for="p_method_<?php echo $_code ?>">
+                                <?php if ($_methodsCount > 1): ?>
+                                    <input type="radio" id="p_method_<?php echo $_code ?>" value="<?php echo $_code ?>" name="payment[method]" title="<?php echo $this->escapeHtml($_method->getTitle()) ?>" onclick="payment.switchMethod('<?php echo $_code ?>')"<?php if($this->getSelectedMethodCode()==$_code): ?> checked="checked"<?php endif; ?> class="radio" />
+                                    <span onclick="click_option('p_method_<?php echo $_code ?>')"></span>
+                                <?php else :?>
+                                    <p class="no-display"><input type="radio" id="p_method_<?php echo $_code ?>" value="<?php echo $_code ?>" name="payment[method]" checked="checked" class="radio" /></p>
+                                <?php endif;?>
+                                    <p onclick="click_option('p_method_<?php echo $_code ?>')"><?php echo $this->escapeHtml($_method->getTitle()) ?></p>
+                                </label>
+                            </dt>
+                            <?php if($html = $this->getChildHtml('payment.method.'.$_code)) : ?>
+                            <dd>
+                                <?php echo $html; ?>
+                            </dd>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                        </dl>
+                        <?php echo $this->getChildHtml('checkout_billing_items') ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="buttons-set">
+            <p class="back-link f-left"><a href="<?php echo $this->getBackUrl() ?>"><small>&laquo; </small><?php echo $this->__('Back to Shipping Information') ?></a></p>
+            <div class="pretty medium info btn f-right"><button id="payment-continue" type="submit" title="<?php echo $this->__('Continue to Review Your Order') ?>" class="button"><?php echo $this->__('Continue to Review Your Order') ?></button></div>
+        </div>
+    </form>
+    <script type="text/javascript">
+    //<![CDATA[
+        var payment = new paymentForm('multishipping-billing-form');
+    //]]>
+    </script>    
+</div>

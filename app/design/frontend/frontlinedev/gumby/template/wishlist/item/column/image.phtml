@@ -1,0 +1,17 @@
+<?php
+/**
+ * package      frontlinedev
+ * theme        gumby
+ * developer    Jason Tipton - Frontlinedev.com
+ * contact      jason@frontlinedev.com
+ */
+
+/* @var Mage_Wishlist_Model_Item $item */
+$item = $this->getItem();
+$product = $item->getProduct();
+?>
+<div class="three columns">
+	<a class="product-image" href="<?php echo $this->getProductUrl($item) ?>" title="<?php echo $this->escapeHtml($product->getName()) ?>">
+	    <img src="<?php echo $this->helper('catalog/image')->init($product, 'small_image')->resize(120, 120); ?>" width="120" height="120" alt="<?php echo $this->escapeHtml($product->getName()) ?>" />
+	</a>
+</div>

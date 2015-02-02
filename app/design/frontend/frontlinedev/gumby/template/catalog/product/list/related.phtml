@@ -1,0 +1,80 @@
+<?php
+/**
+ * package      frontlinedev
+ * theme        gumby
+ * developer    Jason Tipton - Frontlinedev.com
+ * contact      jason@frontlinedev.com
+ */
+?>
+<?php if($this->getItems()->getSize()): ?>
+<div class="block block-related">
+    <div class="block-title">
+        <strong><span><?php echo $this->__('Related Products') ?></span></strong>
+    </div>
+    <div class="block-content">
+        <p class="block-subtitle"><?php echo $this->__('Check items to add to the cart or') ?>&nbsp;<a href="#" onclick="selectAllRelated(this); return false;"><?php echo $this->__('select all') ?></a></p>
+        <ul class="mini-products-list" id="block-related">
+            <li class="field item">
+            <?php foreach($this->getItems() as $_item): ?>
+                <?php if(!$_item->isComposite() && $_item->isSaleable()): ?>
+                    <?php if (!$_item->getRequiredOptions()): ?>
+                        <label class="checkbox" for="related-checkbox<?php echo $_item->getId() ?>">
+                            <input type="checkbox" class="checkbox related-checkbox" id="related-checkbox<?php echo $_item->getId() ?>" name="related_products[]" value="<?php echo $_item->getId() ?>" />
+                            <span onclick="click_option('related-checkbox<?php echo $_item->getId() ?>')"></span>
+                            <p onclick="click_option('related-checkbox<?php echo $_item->getId() ?>')"><?php echo $this->escapeHtml($_item->getName()) ?><?php echo strip_tags($this->getPriceHtml($_item, true, '-related')) ?></p>
+                        </label>
+                    <?php endif; ?>
+                <?php endif; ?>
+                <div class="product">
+                    <a href="<?php echo $_item->getProductUrl() ?>" title="<?php echo $this->escapeHtml($_item->getName()) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail')->resize(80) ?>" width="80" height="80" alt="<?php echo $this->escapeHtml($_item->getName()) ?>" /></a>
+                    <div class="product-details">
+                        <p class="product-name"><a href="<?php echo $_item->getProductUrl() ?>"><?php echo $this->__('View Product') ?></a></p>
+                        <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                            <div class="link-wishlist pretty small secondary btn icon-right icon-list-add"><a href="<?php echo $this->getAddToWishlistUrl($_item) ?>" class="link-wishlist" title="<?php echo $this->__('Add to Wishlist') ?>"><?php echo $this->__('Wishlist') ?></a></div>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            <?php endforeach ?>
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+    //<![CDATA[
+    $$('.related-checkbox').each(function(elem){
+        Event.observe(elem, 'click', addRelatedToProduct)
+    });
+
+    var relatedProductsCheckFlag = false;
+    function selectAllRelated(txt){
+        if (relatedProductsCheckFlag == false) {
+            $$('.related-checkbox').each(function(elem){
+                elem.checked = true;
+                elem.click(); //click the checkboxes                
+            });
+            relatedProductsCheckFlag = true;
+            txt.innerHTML="<?php echo $this->__('unselect all') ?>";
+        } else {
+            $$('.related-checkbox').each(function(elem){
+                elem.checked = false;
+                elem.click(); //unclick the checkbox
+            });
+            relatedProductsCheckFlag = false;
+            txt.innerHTML="<?php echo $this->__('select all') ?>";
+        }
+        addRelatedToProduct();
+    }
+
+    function addRelatedToProduct(){
+        var checkboxes = $$('.related-checkbox');
+        var values = [];
+        for(var i=0;i<checkboxes.length;i++){
+            if(checkboxes[i].checked) values.push(checkboxes[i].value);
+        }
+        if($('related-products-field')){
+            $('related-products-field').value = values.join(',');
+        }
+    }
+    //]]>
+    </script>
+</div>
+<?php endif ?>

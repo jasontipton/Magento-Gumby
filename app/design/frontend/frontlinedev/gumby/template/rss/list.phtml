@@ -1,0 +1,66 @@
+<?php
+/**
+ * package      frontlinedev
+ * theme        gumby
+ * developer    Jason Tipton - Frontlinedev.com
+ * contact      jason@frontlinedev.com
+ */
+?>
+<div class="page-title rss-title">
+    <h1><i class="icon-rss"></i><?php echo $this->__('RSS Feeds') ?></h1>
+</div>
+<?php
+    $_categories = $this->getRssCatalogFeeds();
+    $_misc = $this->getRssMiscFeeds();
+?>
+<?php if ($_categories || $_misc): ?>
+<?php if($_misc): ?>
+<table class="data-table rss-table" id="rss-table-misc">
+    <col />
+    <col width="1" />
+    <thead>
+        <tr>
+            <th colspan="2"><?php echo $this->__('Miscellaneous Feeds') ?></th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($_misc as $_feed): ?>
+        <tr>
+            <td><?php echo $_feed->getLabel() ?></td>
+            <td><a href="<?php echo $_feed->getUrl() ?>" class="link-rss"><i class="icon-rss"></i><?php echo $this->__('Get Feed'); ?></a></td>
+        </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+<?php endif; ?>
+<?php if ($_categories && $_misc): ?>
+<br />
+<?php endif ?>
+<?php if($_categories): ?>
+<table class="data-table rss-table" id="rss-table-category">
+    <col />
+    <col width="1" />
+    <thead>
+        <tr>
+            <th colspan="2"><?php echo $this->__('Category Feeds') ?></th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($_categories as $_category): ?>
+        <tr>
+            <td><?php echo $_category->getLabel() ?></td>
+            <td><a href="<?php echo $_category->getUrl() ?>" class="link-rss"><i class="icon-rss"></i><?php echo $this->__('Get Feed'); ?></a></td>
+        </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+<?php endif; ?>
+<script type="text/javascript">
+//<![CDATA[
+    decorateTable('rss-table-misc');
+    decorateTable('rss-table-category');
+//]]>
+</script>
+<?php else: ?>
+    <p><?php echo $this->__('There are no Rss Feeds'); ?></p>
+<?php endif; ?>

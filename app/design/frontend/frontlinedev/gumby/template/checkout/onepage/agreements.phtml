@@ -1,0 +1,43 @@
+<?php
+/**
+ * package      frontlinedev
+ * theme        gumby
+ * developer    Jason Tipton - Frontlinedev.com
+ * contact      jason@frontlinedev.com
+ */
+?>
+<?php
+/**
+ * @see Mage_Checkout_Block_Agreements
+ */
+?>
+
+<?php if (!$this->getAgreements()) return; ?>
+<form action="" id="checkout-agreements" onsubmit="return false;">
+    <ul class="checkout-agreements">
+    <?php foreach ($this->getAgreements() as $_a): ?>
+        <li class="field">
+            <div class="agreement-content"<?php echo ($_a->getContentHeight() ? ' style="height:' . $_a->getContentHeight() . '"' : '')?>>
+                <?php if ($_a->getIsHtml()):?>
+                    <?php echo $_a->getContent() ?>
+                <?php else:?>
+                    <?php echo nl2br($this->escapeHtml($_a->getContent())) ?>
+                <?php endif; ?>
+            </div>
+            <div class="agree">
+                <label class="checkbox" for="agreement-<?php echo $_a->getId()?>">
+                    <input type="checkbox" id="agreement-<?php echo $_a->getId()?>" name="agreement[<?php echo $_a->getId()?>]" value="1" title="<?php echo $this->escapeHtml($_a->getCheckboxText()) ?>" class="checkbox" />
+                    <span onclick="click_option('agreement-<?php echo $_a->getId()?>')"></span>
+                    <p onclick="click_option('agreement-<?php echo $_a->getId()?>')"><?php echo $_a->getIsHtml() ? $_a->getCheckboxText() : $this->escapeHtml($_a->getCheckboxText()) ?></p>
+                </label>
+            </div>
+        </li>
+    <?php endforeach ?>
+    </ul>
+</form>
+<script>
+    //reload Gumby checkbox due to Onepage Checkout AJAX
+    if (typeof Gumby != 'undefined') {
+        Gumby.initialize(['checkbox'], true);
+    }
+</script>

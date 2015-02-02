@@ -1,0 +1,12 @@
+<?php
+/**
+ * package      frontlinedev
+ * theme        gumby
+ * developer    Jason Tipton - Frontlinedev.com
+ * contact      jason@frontlinedev.com
+ */
+?>
+
+<?php if($this->getWishlist()->getItemsCount()): ?>
+	<div class="pretty medium info btn"><button type="submit" name="do" title="<?php echo $this->__('Update Wishlist') ?>" class="button btn-update"><?php echo $this->__('Update Wishlist') ?></button></div>
+<?php endif;?>

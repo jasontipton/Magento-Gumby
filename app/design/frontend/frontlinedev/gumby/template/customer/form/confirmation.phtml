@@ -1,0 +1,36 @@
+<?php
+/**
+ * package      frontlinedev
+ * theme        gumby
+ * developer    Jason Tipton - Frontlinedev.com
+ * contact      jason@frontlinedev.com
+ */
+?>
+<div class="page-title">
+    <h1><?php echo $this->__('Send confirmation link') ?></h1>
+</div>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<form action="" method="post" id="form-validate">
+    <div class="fieldset">
+        <h2 class="legend"><?php echo $this->__('Retrieve your confirmation link here') ?></h2>
+        <p><?php echo $this->__('Please enter your email below and we\'ll send you confirmation link for it.') ?></p>
+        <ul class="form-list">
+            <li>
+                <label for="email_address" class="required"><em>*</em><?php echo $this->__('Email Address') ?></label>
+                <div class="input-box">
+                    <input type="text" name="email" id="email_address" title="<?php echo $this->__('Email Address') ?>" class="input-text required-entry validate-email" value="<?php echo $this->escapeHtml($this->getEmail()) ?>" />
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="buttons-set">
+        <p class="required"><?php echo $this->__('* Required Fields') ?></p>
+        <p class="back-link"><a href="<?php echo $this->helper('customer')->getLoginUrl() ?>"><small>&laquo; </small><?php echo $this->__('Back to Login') ?></a></p>
+        <div class="pretty small info btn"><button type="submit" title="<?php echo $this->__('Submit') ?>" class="button"><?php echo $this->__('Submit') ?></button></div>
+    </div>
+</form>
+<script type="text/javascript">
+//<![CDATA[
+    var dataForm = new VarienForm('form-validate', true);
+//]]>
+</script>

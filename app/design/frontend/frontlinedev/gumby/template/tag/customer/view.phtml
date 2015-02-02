@@ -1,0 +1,66 @@
+<?php
+/**
+ * package      frontlinedev
+ * theme        gumby
+ * developer    Jason Tipton - Frontlinedev.com
+ * contact      jason@frontlinedev.com
+ */
+?>
+<div class="page-title">
+    <h1><?php echo $this->__('My Tags') ?></h1>
+</div>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<p class="my-tag-edit">
+    <a href="#" title="<?php echo $this->__('Delete') ?>" onclick="if(confirm('<?php echo $this->__('Are you sure you want to delete this tag?') ?>')) window.location='<?php echo $this->getTagInfo()->getRemoveTagUrl(); ?>'; return false;" class="button btn-remove"><span><i class="icon-cancel-squared"></i><?php echo $this->__('Delete') ?></span></a>
+    <?php echo $this->__('<strong>Tag Name:</strong> %s', $this->escapeHtml($this->getTagInfo()->getName())) ?>
+</p>
+<div class="clearer"></div>
+<?php echo $this->getToolbarHtml() ?>
+<table class="data-table" id="my-tags-table">
+<?php if( sizeof($this->getMyProducts()) > 0 ): ?>
+    <col width="1" />
+    <col />
+    <col width="1" />
+    <tbody>
+    <?php $iterator = 0 ?>
+    <?php foreach($this->getMyProducts() as $_product): ?>
+        <tr<?php if($iterator % 2 == 0): ?> class="odd"<?php $iterator++;endif; ?>>
+            <td><a href="<?php echo $_product->getProductUrl(); ?>" title="<?php echo $this->escapeHtml($_product->getName()) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(100, 100); ?>" width="100" height="100" alt="<?php echo $this->escapeHtml($_product->getName()) ?>" /></a></td>
+            <td>
+                <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>"><?php echo $this->escapeHtml($_product->getName()) ?></a></h2>
+                <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+                <?php echo $this->getPriceHtml($_product) ?>
+                <?php echo $this->escapeHtml($_product->getDescription()) ?>
+            </td>
+            <td>
+                <?php if($_product->isSaleable()): ?>
+                    <?php $params[Mage_Core_Model_Url::FORM_KEY] = Mage::getSingleton('core/session')->getFormKey() ?>
+                    <?php $params['product'] = $_product->getId(); ?>
+                    <div class="pretty medium primary btn"><button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getUrl('checkout/cart/add', $params) ?>')"><i class="icon-basket"></i><?php echo $this->__('Add to Cart') ?></div>
+                <?php endif; ?>
+                <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                <div class="add-to-links">
+                    <div class="pretty small secondary btn">
+                        <a href="<?php echo $this->getUrl('wishlist/index/add',array('product'=>$_product->getId())) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a>
+                    </div>
+                </div>
+                <?php endif; ?>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+<?php else: ?>
+    <tbody>
+        <tr>
+            <td>
+                <?php echo $this->__("Unable to find any products tagged with '%s' in the current store", $this->escapeHtml($this->getTagInfo()->getName()) ) ?>
+            </td>
+        </tr>
+    </tbody>
+<?php endif; ?>
+</table>
+<script type="text/javascript">decorateTable('my-tags-table')</script>
+<?php echo $this->getToolbarHtml() ?>
+<div class="buttons-set">
+    <p class="back-link"><a href="<?php echo $this->getUrl('*/*/')?>"><small>&laquo; </small><?php echo $this->__('Back to Tags List')?></a></p>
+</div>

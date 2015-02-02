@@ -1,0 +1,32 @@
+<?php
+/**
+ * package      frontlinedev
+ * theme        gumby
+ * developer    Jason Tipton - Frontlinedev.com
+ * contact      jason@frontlinedev.com
+ */
+?>
+<div class="multiple-checkout">
+    <div class="page-title">
+        <h1 data-role="page-title"><?php echo $this->__('Order Success') ?></h1>
+    </div>
+    <h2 class="sub-title"><?php echo $this->__('Thank you for your purchase!') ?></h2>
+    <p><?php echo $this->__('We are processing your order and you will soon receive an email with details of the order. Once the order has shipped you will receive another email with a link to track its progress.') ?></p>
+    <?php if($_orderIds = $this->getOrderIds()): ?>
+    <p data-role="order-numbers">
+        <?php $flag = false ?>
+        <?php echo $this->__('Your order number is ') ?>
+        <?php foreach ($_orderIds as $orderId=>$incrementId): ?>
+            <?php if ($flag): ?>
+                <?php echo ', ' ?>
+            <?php endif; ?>
+            <?php $flag = true ?>
+            <a href="<?php echo $this->getViewOrderUrl($orderId) ?>"><?php echo $incrementId ?></a>
+        <?php endforeach; ?>
+    </p>
+    <?php endif; ?>
+    <?php echo $this->getChildHtml() ?>
+    <div class="buttons-set">
+        <div class="pretty medium primary btn" ><button type="button" title="<?php echo $this->__('Continue Shopping') ?>" class="button btn-continue" onclick="setLocation('<?php echo $this->getContinueShoppingUrl() ?>')"><?php echo $this->__('Continue Shopping') ?></button></div>
+    </div>
+</div>

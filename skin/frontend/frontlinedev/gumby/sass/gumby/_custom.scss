@@ -1,0 +1,202 @@
+// Your custom SCSS should be written at the bottom of this file ...
+
+/*
+* === MINOR FIXES FOR GUMBY UI ELEMENTS USED IN MAGENTO ===
+*/
+	i[class^="icon-"], i[class*=" icon-"] { font-style: normal; } /* prevents default italicisation */
+	.btn, .skiplink { margin: 5px; } /* adds default margin to all buttons */
+	.append input, .prepend input, .prepend.append input { vertical-align: top; } /* fixes positioning for UI inputs */
+	.prepend .adjoined, .prepend .btn { margin: 0 -1px 0 0; }
+	.append .adjoined, .append .btn { margin: 0 0 0 -1px; }
+	.tabs.pill .tab-nav { padding: 0; } /* prevents inherited left padding on tabs pill style */
+	input.wide:last-child, .input.wide:last-child { margin-left: 0; } /* prevent labeled inputs from left cutoff */
+	.field {
+		padding-bottom: 1px;
+		// fixes border bottom cut off 
+		// https://github.com/GumbyFramework/Gumby/issues/253
+	}
+	/* allows for <p> to be used in radio button options */
+	.js .field .radio p {
+		display: inline-block;
+		font-size: 16px;
+		font-size: 1rem;
+		line-height: 1.5em;
+		cursor: pointer;
+		margin-bottom: 9px;
+		margin-left: 10px;
+	}
+	/* allows for <p> to be used in check box options */
+	.js .field .checkbox p {
+	display: inline;
+	font-size: 16px;
+	font-size: 1rem;
+	line-height: 1.5em;
+	cursor: pointer;
+	margin-bottom: 9px;
+	margin-left: 10px;
+	}	
+	/* Multi Select Form Picker Element (<select>) */
+	.multi-picker {
+	  position: relative;
+	  width: auto;
+	  display: inline-block;
+	  margin: 0 0 2px 1.2%;
+	  overflow: hidden;
+	  border: 1px solid darken($default-color, 5%);
+	  @include border-radius(4px);
+	  font-family: $font-family;
+	  font-weight: $font-weight-semibold;
+	  height: auto;
+	  select[multiple] {
+	    position: relative;
+	    display: block;
+	    min-width: 100%;
+	    width: 100%;
+	    height: auto;
+	    padding: 6px 45px 6px 15px;
+	    color: $body-font-color;
+	    border: none;
+	    background: transparent;
+	    outline: none;
+	    -webkit-appearance: none;
+	    z-index: 99;
+	    cursor: pointer;
+	    @include font-size($norm);
+	  }
+	  select::-ms-expand {
+	    display: none;
+	  }
+	}
+/*
+* === END MINOR FIXES FOR GUMBY UI ELEMENTS USED IN MAGENTO ===
+*/
+
+
+/*
+* === CUSTOM STYLES FOR GUMBY MAGENTO THEME ===
+*/
+
+
+	html {
+		font-size: 16px;
+		line-height: 1.625em;
+	}	
+
+	/* Top Links mobile view */
+	@media only screen and (max-width: $tablet-device-width) {
+		#inner-nav li {
+			width: 48%;
+			display: inline-block;
+			text-align: center;
+		}
+		#inner-nav li:nth-child(odd) {
+			margin-left: 0;
+			float: left;
+		}
+	}
+
+	/* Product Grid Layouts */
+	// 5 columns on desktop, 2 at 600px, and 1 column on mobile devices
+	.products-grid.col-count-5 li.item, #crosssell-products-list.products-grid.col-count-5 li.item {
+	  @include fancytiles(5,2,1, $min-device-width, '600px', '960px');
+	  min-height: 460px;
+	  height: auto;
+	}
+	// 4 columns on desktop, 2 at 600px, and 1 column on mobile devices
+	.products-grid.col-count-4 li.item, #crosssell-products-list.col-count-4 li.item {
+	  @include fancytiles(4,2,1, $min-device-width, '600px', '960px');
+	  min-height: 460px;
+	  height: auto;
+	}
+	// 3 columns on desktop, 2 at 600px, and 1 column on mobile devices
+	.products-grid.col-count-3 li.item, #crosssell-products-list.col-count-3 li.item {
+	  @include fancytiles(3,2,1, $min-device-width, '600px', '960px');
+	  min-height: 460px;
+	  height: auto;
+	}
+	// 2 columns on desktop and 1 column on mobile devices
+	.products-grid.col-count-2 li.item, #crosssell-products-list.col-count-2 li.item {
+	  @include fancytiles(2,2,1, $min-device-width, '600px', '960px');
+	  min-height: 460px;
+	  height: auto;
+	}
+
+	/* Product list display */
+	h2.product-name { @include font-size($larger); }
+
+	/* Top Links a.k.a Inner Nav */
+	/* styles borrowed from Gumby's doc page */
+	#inner-nav {
+	}
+	#inner-nav > div { 
+		padding-top: .504em;
+	}
+	#inner-nav .btn {
+		background: none;
+		-webkit-transition: 0.4s;
+		-moz-transition: 0.4s;
+		-o-transition: 0.4s;
+		transition: 0.4s;
+	}
+	#inner-nav .btn:hover {
+		background: #f2f2f2;
+	}
+	#inner-nav a {
+		color: #555555;
+		white-space: nowrap;
+	}
+	#inner-nav .active .btn {
+		background: #3085d6;
+	}
+	#inner-nav .active .btn a {
+		color: #ffffff;
+	}
+
+	.sub-footer-container {
+		margin-top: 20px;
+	}
+
+	.label {
+		background: #4a4d50;
+		border: 1px solid #4a4d50;
+	}
+
+	/*updating the input validation design */
+	.validation-advice:before {
+		font-family: "entypo";
+		content: "\2191";
+		height: inherit;
+		padding-right: 10px;
+		font-size: 16px;
+		position: relative;
+		top: 14%;
+		left: 0px;
+		z-index: 999;
+		color: #f00;
+	}
+
+	/* remove border for reviews tables */
+	.ratings-table, .ratings-table td { border:none; }
+
+	.shaded { background-color: #E9E9E9 !important; } /*borrowed from Gumby's docs page*/
+
+	.padding-medium { padding: 2em 0; } /* basic padding tool */
+
+
+	/* back to top */
+	#back_top {
+		position: fixed;
+		right: 20px;
+		bottom: 20px;
+	}
+
+	/* Clears */
+	.clearfix:after {
+	  content: "";
+	  display: table;
+	  clear: both;
+	}
+
+/*
+* === END CUSTOM STYLES FOR GUMBY MAGENTO THEME ===
+*/

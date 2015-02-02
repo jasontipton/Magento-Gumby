@@ -1,0 +1,93 @@
+<?php
+/**
+ * package      frontlinedev
+ * theme        gumby
+ * developer    Jason Tipton - Frontlinedev.com
+ * contact      jason@frontlinedev.com
+ */
+?>
+<?php
+/**
+ * Product list toolbar
+ *
+ * @see Mage_Catalog_Block_Product_List_Toolbar
+ */
+?>
+<?php if($this->getCollection()->getSize()): ?>
+<div class="toolbar">
+    <?php if (!$this->getHidePagerShowSorter()) : ?>
+    <div class="pager">
+        <p class="amount f-left">
+            <?php if($this->getLastPageNum()>1): ?>
+                <?php echo $this->__('Items %s to %s of %s total', $this->getFirstNum(), $this->getLastNum(), $this->getTotalNum()) ?>
+            <?php else: ?>
+                <strong><?php echo $this->__('%s Item(s)', $this->getTotalNum()) ?></strong>
+            <?php endif; ?>
+        </p>
+
+        <div class="limiter f-right">
+            <div class="field">
+                <div class="picker">
+                    <select onchange="setLocation(this.value)">
+                    <?php foreach ($this->getAvailableLimit() as  $_key=>$_limit): ?>
+                        <option value="<?php echo $this->getLimitUrl($_key) ?>"<?php if($this->isLimitCurrent($_key)): ?> selected="selected"<?php endif ?>>
+                            <?php echo $_limit ?>&nbsp;<?php echo $this->__('items') ?>
+                        </option>
+                    <?php endforeach; ?>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <?php echo $this->getPagerHtml() ?>
+    </div>
+    <?php endif;?>    
+
+    <?php if ($this->getHidePagerShowSorter()) : ?>
+    <?php if( $this->isExpanded() ): ?>
+    <div class="sorter">
+        <?php if( $this->isEnabledViewSwitcher() ): ?>
+        <div class="view-mode f-left">
+            <?php $_modes = $this->getModes(); ?>
+            <?php if($_modes && count($_modes)>1): ?>
+            <label><?php echo $this->__('View') ?>:</label>
+            <?php foreach ($this->getModes() as $_code=>$_label): ?>
+                <?php if($this->isModeActive($_code)): ?>
+                    <strong title="<?php echo $_label ?>" class="<?php echo strtolower($_code); ?>">
+                        <?php if (strtolower($_code)=='grid') { ?> <i class="icon-layout"></i> <?php } ?>
+                        <?php if (strtolower($_code)=='list') { ?> <i class="icon-list"></i> <?php } ?>
+                    </strong>
+                <?php else: ?>
+                    <a href="<?php echo $this->getModeUrl($_code) ?>" title="<?php echo $_label ?>" class="<?php echo strtolower($_code); ?>">
+                        <?php if (strtolower($_code)=='grid') { ?> <i class="icon-layout"></i> <?php } ?>
+                        <?php if (strtolower($_code)=='list') { ?> <i class="icon-list"></i> <?php } ?>
+                        </a>
+                <?php endif; ?>
+            <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+        <?php endif; ?>
+    
+        <div class="sort-by f-right">
+            <div class="field f-right">
+                <div class="picker">
+                    <select onchange="setLocation(this.value)">
+                    <?php foreach($this->getAvailableOrders() as $_key=>$_order): ?>
+                        <option value="<?php echo $this->getOrderUrl($_key, 'asc') ?>"<?php if($this->isOrderCurrent($_key)): ?> selected="selected"<?php endif; ?>>
+                            <?php echo $this->__('Sort By') ?>&nbsp;<?php echo $this->__($_order) ?>
+                        </option>
+                    <?php endforeach; ?>
+                    </select>
+                </div>
+            </div>
+            <?php if($this->getCurrentDirection() == 'desc'): ?>
+                <a class="f-right" href="<?php echo $this->getOrderUrl(null, 'asc') ?>" title="<?php echo $this->__('Set Ascending Direction') ?>"><i class="icon-down"></i></a>
+            <?php else: ?>
+                <a class="f-right" href="<?php echo $this->getOrderUrl(null, 'desc') ?>" title="<?php echo $this->__('Set Descending Direction') ?>"><i class="icon-up"></i></a>
+            <?php endif; ?>
+        </div>
+    </div>
+    <?php endif; ?>
+    <?php endif;?>
+</div>
+<?php endif ?>

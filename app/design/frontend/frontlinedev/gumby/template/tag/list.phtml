@@ -1,0 +1,38 @@
+<?php
+/**
+ * package      frontlinedev
+ * theme        gumby
+ * developer    Jason Tipton - Frontlinedev.com
+ * contact      jason@frontlinedev.com
+ */
+?>
+<div class="box-collateral box-tags">
+    <h2><?php echo $this->__('Product Tags') ?></h2>
+    <?php echo $this->getChildHtml('list_before')?>
+    <?php if( $this->getCount() ): ?>
+    <h3><?php echo $this->__('Other people marked this product with these tags:') ?></h3>
+    <ul id="<?php echo $this->getUniqueHtmlId('product-tags_'); ?>" class="product-tags clearfix">
+        <?php echo $this->renderTags('<li class="f-left"><a rel="tag" href="%1$s">%2$s</a> (%3$s)</li>') ?>
+    </ul>
+    <?php endif; ?>
+    <form id="addTagForm" action="<?php echo $this->getFormAction(); ?>" method="get">
+        <div class="field form-add">
+            <?php /*
+            <label class="inline" for="productTagName"><?php echo $this->__('Add Your Tags:') ?></label>
+            */ ?>
+            <input type="text" class="normal text input input-text required-entry" name="productTagName" id="productTagName" placeholder="<?php echo $this->__('Add Your Tags') ?>" />
+            <div class="pretty medium info btn"><button type="button" title="<?php echo $this->__('Add Tags') ?>" class="button" onclick="submitTagForm()"><?php echo $this->__('Add Tags') ?></button></div>
+        </div>
+    </form>
+    <p class="note"><?php echo $this->__("Use spaces to separate tags. Use single quotes (') for phrases.") ?></p>
+    <script type="text/javascript">
+    //<![CDATA[
+        var addTagFormJs = new VarienForm('addTagForm');
+        function submitTagForm(){
+            if(addTagFormJs.validator.validate()) {
+                addTagFormJs.form.submit();
+            }
+        }
+    //]]>
+    </script>
+</div>

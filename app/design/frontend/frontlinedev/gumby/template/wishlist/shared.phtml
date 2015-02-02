@@ -1,0 +1,67 @@
+<?php
+/**
+ * package      frontlinedev
+ * theme        gumby
+ * developer    Jason Tipton - Frontlinedev.com
+ * contact      jason@frontlinedev.com
+ */
+/* @var $this Mage_Wishlist_Block_Share_Wishlist */
+?>
+<div class="my-wishlist">
+    <div class="page-title">
+        <h1><?php echo $this->escapeHtml($this->getHeader()) ?></h1>
+    </div>
+    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+    <?php if ($this->hasWishlistItems()): ?>
+    <form action="<?php echo $this->getUrl('*/*/update') ?>" method="post">
+        <fieldset>
+            <table class="data-table" id="wishlist-table">
+            <col width="1" />
+            <col />
+            <col width="1" />
+            <thead>
+                <tr>
+                    <th><?php echo $this->__('Product') ?></th>
+                    <th><?php echo $this->__('Comment') ?></th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php foreach($this->getWishlistItems() as $item): ?>
+                <?php
+                    $product = $item->getProduct();
+                    $isVisibleProduct = $product->isVisibleInSiteVisibility();
+                ?>
+                <tr>
+                    <td>
+                        <a class="product-image" href="<?php echo $this->getProductUrl($item) ?>" title="<?php echo $this->escapeHtml($product->getName()) ?>"><img src="<?php echo $this->helper('catalog/image')->init($product, 'small_image')->resize(113, 113); ?>" width="113" height="113" alt="<?php echo $this->escapeHtml($product->getName()) ?>" /></a>
+                        <h2 class="product-name"><a href="<?php echo $this->getProductUrl($item) ?>"><?php echo $this->escapeHtml($product->getName()) ?></a></h2>
+                        <?php echo $this->getPriceHtml($product) ?>
+                        <?php echo $this->getDetailsHtml($item) ?>
+                    </td>
+                    <td><?php echo $this->getEscapedDescription($item) ?></td>
+                    <td class="a-center">
+                    <?php if ($product->isSaleable()): ?>
+                        <?php if ($isVisibleProduct): ?>
+                            <div class="pretty medium primary btn"><button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" href="<?php echo $this->getSharedItemAddToCartUrl($item) ?>"><i class="icon-basket"></i><?php echo $this->__('Add to Cart') ?></div>
+                        <?php endif ?>
+                    <?php endif; ?>
+                        <div class="link-wishlist pretty small secondary btn icon-right icon-list-add"><a href="<?php echo $this->getAddToWishlistUrl($item) ?>" onclick="setLocation(this.href); return false;" title="<?php echo $this->__('Add to Wishlist') ?>" class="link-wishlist"><?php echo $this->__('Wishlist') ?></a></div>
+                    </td>
+                </tr>
+            <?php endforeach ?>
+            </tbody>
+            </table>
+            <script type="text/javascript">decorateTable('wishlist-table');</script>
+        </fieldset>
+        <div class="buttons-set">
+            <p class="back-link"><a href="<?php echo $this->escapeUrl($this->getBackUrl()) ?>"><small>&laquo; </small><?php echo $this->__('Back') ?></a></p>
+            <?php if($this->isSaleable()):?>
+                <div class="pretty medium primary btn"><button type="button" title="<?php echo $this->__('Add All to Cart') ?>" onclick="setLocation('<?php echo $this->getUrl('*/*/allcart', array('_current'=>true)) ?>')" class="button"><i class="icon-basket"></i><?php echo $this->__('Add All to Cart') ?></div>
+            <?php endif;?>
+        </div>
+    </form>
+    <?php else: ?>
+        <p><?php echo $this->__('Wishlist is empty now.') ?></p>
+    <?php endif ?>
+</div>

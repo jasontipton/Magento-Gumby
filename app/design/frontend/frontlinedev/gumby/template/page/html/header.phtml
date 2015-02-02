@@ -1,0 +1,96 @@
+<?php
+/**
+ * package      frontlinedev
+ * theme        gumby
+ * developer    Jason Tipton - Frontlinedev.com
+ * contact      jason@frontlinedev.com
+ */
+/**
+ * @var Mage_Page_Block_Html_Header $this
+ */
+?>
+<nav class="pretty navbar header-container no-margin">
+    <?php /* base code for navigation is from Petar Sambolek https://github.com/sambolek/custom-category-menu/blob/master/app/design/frontend/base/default/template/page/custom.phtml */ ?>
+    <div class="row" id="category-nav">
+        <a class="toggle" gumby-trigger="#category-nav > ul" href="#"><i class="icon-menu"></i></a>
+        <?php if ($this->getIsHomePage()):?>
+        <h1 class="four columns logo"><strong class="hide"><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></h1>
+        <?php else:?>
+        <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="four columns logo"><strong class="hide"><?php echo $this->getLogoAlt() ?></strong><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
+        <?php endif?>        
+        <ul class="eight columns">
+            <?php
+                $obj = new Mage_Catalog_Block_Navigation();
+                $storeCategories = $obj->getStoreCategories();
+                Mage::registry('current_category') ? $currentCategoryId = Mage::registry('current_category')->getId() : $currentCategoryId='';
+                foreach ($storeCategories as $_category): ?>
+                    <li>
+                        <?php $_categoryModel = Mage::getModel('catalog/category')->load($_category->getId());?>
+                        <a href="<?php echo $_categoryModel->getUrl(); ?>"><?php echo $_category->getName(); ?></a>
+                        <?php $categoryChildren = $_category->getChildren(); ?>
+                        <?php if($categoryChildren->count()) : ?>
+                            <div class="dropdown">
+                                <ul>
+                                    <?php foreach($categoryChildren as $_categoryChild) : ?>
+                                        <?php $_categoryChildModel = Mage::getModel('catalog/category')->load($_categoryChild->getId());?>
+                                        <?php $categoryGrandchildren=$_categoryChild->getChildren(); ?>
+                                        <li>
+                                            <a href="<?php echo $_categoryChildModel->getUrl(); ?>"><span class="category-name"><?php echo $_categoryChild->getName(); ?></span><span class="category-count">(<?php echo $_categoryChildModel->getProductCollection()->count(); ?>)</span></a>
+                                            <?php if($categoryGrandchildren->count()) : ?>
+                                                <?php foreach($categoryGrandchildren as $_categoryGrandchild) : ?>
+                                                    <?php $_categoryGrandchildModel = Mage::getModel('catalog/category')->load($_categoryGrandchild->getId());?>
+                                                    <div class="dropdown">
+                                                        <ul>
+                                                            <li>
+                                                                <a href="<?php echo $_categoryGrandchildModel->getUrl(); ?>"><span class="category-name"><?php echo $_categoryGrandchild->getName(); ?></span><span class="category-count">(<?php echo $_categoryGrandchildModel->getProductCount(); ?>)</span></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                <?php endforeach; ?>
+                                            <?php endif; ?>                                    
+                                        </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </div>
+                        <?php endif; ?>
+                    </li>
+                <?php endforeach ?>
+                    <li>
+                        <p class="btn default medium"><a href="#" class="switch" gumby-trigger="#modal-search"><i class="icon-search"></i>Search</a></p>
+                    </li>
+        </ul>
+    </div>
+
+    <?php /* Search box modal */ ?>
+    <div class="modal" id="modal-search">
+        <div class="content">
+            <a class="close switch" gumby-trigger="|#modal-search"><i class="icon-cancel" /></i></a>
+            <div class="row">
+                <div class="ten columns centered text-center">
+                    <h2>Search&nbsp;<?php echo Mage::app()->getWebsite()->getName(); ?></h2>
+                    <?php echo $this->getChildHtml('topSearch') ?>
+                    <p>Enter search terms and click search button or use the <a href="/catalogsearch/advanced/">Advanced Search</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="shaded">
+      <div id="inner-nav" class="row header">
+        <div class="twelve columns">
+            <div class="quick-access a-center">
+                <?php echo $this->getChildHtml('topLinks') ?>
+            </div>
+        </div>
+    </div>
+</div>
+<?php /*
+<p class="welcome-msg a-left"><?php echo $this->getChildHtml('welcome') ?> <?php echo $this->getAdditionalHtml() ?></p>
+*/ ?>
+<?php echo $this->getChildHtml('topContainer'); ?>
+
+
+<?php /*
+<?php echo $this->getChildHtml('topMenu') ?>
+*/ ?>

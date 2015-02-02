@@ -1,0 +1,154 @@
+<?php
+/**
+ * package      frontlinedev
+ * theme        gumby
+ * developer    Jason Tipton - Frontlinedev.com
+ * contact      jason@frontlinedev.com
+ */
+?>
+<?php
+/**
+ * Edit customer address template
+ *
+ * @see Mage_Customer_Block_Address_Edit
+ */
+?>
+<?php if($this->getTitle()): ?>
+<div class="page-title">
+    <h1><?php echo $this->getTitle() ?></h1>
+</div>
+<?php endif; ?>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<form action="<?php echo $this->getSaveUrl() ?>" method="post" id="form-validate">
+    <div class="fieldset">
+    <?php echo $this->getBlockHtml('formkey')?>
+    <input type="hidden" name="success_url" value="<?php echo $this->getSuccessUrl() ?>" />
+    <input type="hidden" name="error_url" value="<?php echo $this->getErrorUrl() ?>" />
+        <h2 class="legend"><?php echo $this->__('Contact Information') ?></h2>
+        <ul class="form-list">
+            <li class="fields">
+                <?php echo $this->getNameBlockHtml() ?>
+            </li>
+            <li class="field">
+                <?php /*
+                <label for="company"><?php echo $this->__('Company') ?></label>
+                */ ?>
+                <input type="text" name="company" id="company" title="<?php echo $this->__('Company') ?>" value="<?php echo $this->escapeHtml($this->getAddress()->getCompany()) ?>" class="normal text input input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('company') ?>" placeholder="<?php echo $this->__('Company (optional)') ?>" />
+            </li>
+            <li class="field">
+                <?php /*
+                <label for="telephone" class="required"><em>*</em><?php echo $this->__('Telephone') ?><
+                /label>
+                */ ?>
+                <input type="text" name="telephone" value="<?php echo $this->escapeHtml($this->getAddress()->getTelephone()) ?>" title="<?php echo $this->__('Telephone') ?>" class="normal text input input-text  <?php echo $this->helper('customer/address')->getAttributeValidationClass('telephone') ?>" id="telephone" placeholder="<?php echo $this->__('Telephone') ?>" />
+            </li>
+            <li class="field">
+                <?php /*
+                <label for="fax"><?php echo $this->__('Fax') ?></label>
+                */ ?>
+                <input type="text" name="fax" id="fax" title="<?php echo $this->__('Fax') ?>" value="<?php echo $this->escapeHtml($this->getAddress()->getFax()) ?>" class="normal text input input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('fax') ?>" placeholder="<?php echo $this->__('Fax (optional)') ?>" />
+            </li>
+        </ul>
+    </div>
+    <div class="fieldset">
+        <h2 class="legend"><?php echo $this->__('Address') ?></h2>
+        <ul class="form-list">
+        <?php $_streetValidationClass = $this->helper('customer/address')->getAttributeValidationClass('street'); ?>
+            <li class="field">
+                <?php /*
+                <label for="street_1" class="required"><em>*</em><?php echo $this->__('Street Address') ?></label>
+                */ ?>
+                <input type="text" name="street[]" value="<?php echo $this->escapeHtml($this->getAddress()->getStreet(1)) ?>" title="<?php echo $this->__('Street Address') ?>" id="street_1" class="normal text input input-text <?php echo $_streetValidationClass ?>" placeholder="<?php echo $this->__('Street Address') ?>" />
+            </li>
+        <?php $_streetValidationClass = trim(str_replace('required-entry', '', $_streetValidationClass)); ?>
+        <?php for ($_i = 2, $_n = $this->helper('customer/address')->getStreetLines(); $_i <= $_n; $_i++): ?>
+            <li class="field">
+                <input type="text" name="street[]" value="<?php echo $this->escapeHtml($this->getAddress()->getStreet($_i)) ?>" title="<?php echo $this->__('Street Address %s', $_i) ?>" id="street_<?php echo $_i ?>" class="normal text input input-text <?php echo $_streetValidationClass ?>" placeholder="<?php echo $this->__('Street Address Line 2') ?>" />
+            </li>
+        <?php endfor; ?>
+            <?php if ($this->helper('customer/address')->isVatAttributeVisible()) : ?>
+            <li class="field">
+                <?php /*
+                <label for="vat_id"><?php echo $this->__('VAT Number') ?></label>
+                */ ?>
+                <input type="text" name="vat_id" value="<?php echo $this->escapeHtml($this->getAddress()->getVatId()) ?>" title="<?php echo $this->__('VAT Number') ?>" id="vat_id" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('vat_id') ?>" placeholder="<?php echo $this->__('VAT Number') ?>" />
+            </li>
+            <?php endif; ?>
+            <li class="field">
+                <?php /*
+                <label for="city" class="required"><em>*</em><?php echo $this->__('City') ?></label>
+                */ ?>
+                <input type="text" name="city" value="<?php echo $this->escapeHtml($this->getAddress()->getCity()) ?>"  title="<?php echo $this->__('City') ?>" class="normal text input input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('city') ?>" id="city" placeholder="<?php echo $this->__('City') ?>" />
+            </li>
+            <li class="field">
+                <?php /*
+                <label for="region_id" class="required"><em>*</em><?php echo $this->__('State/Province') ?></label>
+                */ ?>
+                <div class="picker">
+                    <select id="region_id" name="region_id" title="<?php echo $this->__('State/Province') ?>" class="validate-select" style="display:none;">
+                       <option value=""><?php echo $this->__('Please select region, state or province') ?></option>
+                    </select>
+                    <script type="text/javascript">
+                    //<![CDATA[
+                        $('region_id').setAttribute('defaultValue',  "<?php echo $this->getAddress()->getRegionId() ?>");
+                    //]]>
+                    </script>
+                    <input type="text" id="region" name="region" value="<?php echo $this->escapeHtml($this->getAddress()->getRegion()) ?>"  title="<?php echo $this->__('State/Province') ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('region') ?>" />
+                </div>
+            </li>
+            <li class="field">
+                <?php /*
+                <label for="zip" class="required"><em>*</em><?php echo $this->__('Zip/Postal Code') ?></label>
+                */ ?>
+                <input type="text" name="postcode" value="<?php echo $this->escapeHtml($this->getAddress()->getPostcode()) ?>" title="<?php echo $this->__('Zip/Postal Code') ?>" id="zip" class="narrow text input input-text validate-zip-international <?php echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?>" placeholder="<?php echo $this->__('Zip/Postal Code') ?>" />
+            </li>
+            <li class="field">
+                <?php /*
+                <label for="country" class="required"><em>*</em><?php echo $this->__('Country') ?></label>
+                */ ?>
+                <div class="picker">
+                    <?php echo $this->getCountryHtmlSelect() ?>
+                </div>
+            </li>
+            <li class="field <?php if($this->canSetAsDefaultBilling()) echo ' control' ?>">
+                <?php if($this->isDefaultBilling()): ?>
+                    <strong><?php echo $this->__('Default Billing Address') ?></strong>
+                <?php elseif($this->canSetAsDefaultBilling()): ?>
+                    <label class="checkbox" for="primary_billing">
+                        <input type="checkbox" id="primary_billing" name="default_billing" value="1" title="<?php echo $this->__('Use as My Default Billing Address') ?>" class="checkbox" />
+                        <span onclick="click_option('primary_billing')"></span> 
+                        <p onclick="click_option('primary_billing')"><?php echo $this->__('Use as my default billing address') ?></p>
+                    </label>
+                <?php else: ?>
+                    <input type="hidden" name="default_billing" value="1" />
+                <?php endif; ?>
+            </li>
+            <li class="field<?php if($this->canSetAsDefaultShipping()) echo ' control' ?>">
+                <?php if($this->isDefaultShipping()): ?>
+                    <strong><?php echo $this->__('Default Shipping Address') ?></strong>
+                <?php elseif($this->canSetAsDefaultShipping()): ?>
+                    <label class="checkbox" for="primary_shipping">
+                        <input type="checkbox" id="primary_shipping" name="default_shipping" value="1" title="<?php echo $this->__('Use as My Default Shipping Address') ?>" class="checkbox" />
+                        <span onclick="click_option('primary_shipping')"></span>
+                        <p onclick="click_option('primary_shipping')"><?php echo $this->__('Use as my default shipping address') ?></p>
+                    </label>
+                <?php else: ?>
+                    <input type="hidden" name="default_shipping" value="1" />
+                <?php endif; ?>
+            </li>
+        </ul>
+    </div>
+    <div class="buttons-set">
+        <?php /*
+        <p class="required"><?php echo $this->__('* Required Fields') ?></p>
+        */ ?>
+        <div class="pretty medium info btn"><button data-action="save-customer-address" type="submit" title="<?php echo $this->__('Save Address') ?>" class="button"><?php echo $this->__('Save Address') ?></button></div>
+        <p class="back-link"><a href="<?php echo $this->escapeUrl($this->getBackUrl()) ?>"><small>&laquo; </small><?php echo $this->__('Back') ?></a></p>
+    </div>
+</form>
+<script type="text/javascript">
+//<![CDATA[
+    var dataForm = new VarienForm('form-validate', true);
+    new RegionUpdater('country', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'zip');
+//]]>
+</script>

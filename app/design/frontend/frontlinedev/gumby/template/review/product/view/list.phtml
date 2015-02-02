@@ -1,0 +1,52 @@
+<?php
+/**
+ * package      frontlinedev
+ * theme        gumby
+ * developer    Jason Tipton - Frontlinedev.com
+ * contact      jason@frontlinedev.com
+ */
+?>
+
+<?php $_items = $this->getReviewsCollection()->getItems();?>
+<div class="box-collateral box-reviews" id="customer-reviews">
+    <?php if (count($_items)):?>
+        <h2><?php echo $this->__('Customer Reviews') ?></h2>
+        <?php if (count($_items)>10):?>
+        <?php echo $this->getChildHtml('toolbar') ?>
+        <?php endif;?>
+        <dl>
+        <?php foreach ($_items as $_review):?>
+            <dt>
+                <a href="<?php echo $this->getReviewUrl($_review->getId()) ?>"><?php echo $this->escapeHtml($_review->getTitle()) ?></a> <?php echo $this->__('Review by <span>%s</span>', $this->escapeHtml($_review->getNickname())) ?>
+            </dt>
+            <dd>
+                <?php $_votes = $_review->getRatingVotes(); ?>
+                <?php if (count($_votes)): ?>
+                <table class="ratings-table">
+                    <col width="1" />
+                    <col />
+                    <tbody>
+                        <?php foreach ($_votes as $_vote): ?>
+                        <tr>
+                            <th><?php echo $this->escapeHtml($_vote->getRatingCode()) ?></th>
+                            <td>
+                                <div class="rating-box">
+                                    <div class="rating" style="width:<?php echo $_vote->getPercent() ?>%;"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+                <?php endif; ?>
+                <?php echo nl2br($this->escapeHtml($_review->getDetail())) ?>
+                <small class="date"><?php echo $this->__('(Posted on %s)', $this->formatDate($_review->getCreatedAt()), 'long') ?></small>
+            </dd>
+        <?php endforeach; ?>
+        </dl>
+        <?php /*
+        <?php echo $this->getChildHtml('toolbar') ?>
+        */ ?>
+    <?php endif;?>
+    <?php echo $this->getChildHtml('review_form') ?>
+</div>

@@ -1,0 +1,117 @@
+>>> Change detected at 17:56:10 to: gumby.scss
+[31m[0m[31m[0m[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Compass is polling for changes. Press Ctrl-C to Stop.
+>>> Change detected at 18:00:47 to: _custom.scss
+[31m[0m[31m[0m[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 03:49:31 to: _custom.scss
+[31m[0m[31m[0m[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 03:51:15 to: _custom.scss
+[31m[0m[31m[0m[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 03:56:33 to: _custom.scss
+[31m[0m[31m[0m[31m    error[0m gumby/gumby.scss (Line 15 of gumby/functions/_fancytiles.scss: 0.3125%/px isn't a valid CSS value.)
+[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 03:57:08 to: _custom.scss
+[31m[0m[31m[0m[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 04:09:38 to: _custom.scss
+[31m[0m[31m[0m[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 04:20:06 to: _custom.scss
+[31m[0m[31m[0m[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 04:46:27 to: _custom.scss
+[31m[0m[31m[0m[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 04:47:45 to: _custom.scss
+[31m[0m[31m[0m[31m    error[0m gumby/gumby.scss (Line 30 of gumby/_custom.scss: Invalid CSS after "...er); min-height": expected "{", was "($larger); }")
+[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 04:48:18 to: _custom.scss
+[31m[0m[31m[0m[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 06:38:10 to: _custom.scss
+[31m[0m[31m[0m[32midentical[0m ../css/gumby/gumby.css 
+>>> Change detected at 06:41:32 to: _custom.scss
+[31m[0m[31m[0m[31m    error[0m gumby/gumby.scss (Line 30 of gumby/_custom.scss: Invalid CSS after "...er); min-height": expected "{", was "(3 * $larger);}")
+[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 06:42:26 to: _custom.scss
+[31m[0m[31m[0m[31m    error[0m gumby/gumby.scss (Line 30 of gumby/_custom.scss: Invalid CSS after "...r); min-height{": expected "}", was "(3 * $larger)};}")
+[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 06:43:15 to: _custom.scss
+[31m[0m[31m[0m[31m    error[0m gumby/gumby.scss (Line 30 of gumby/_custom.scss: Invalid CSS after "...er); min-height": expected "{", was "(3*$larger);}")
+[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 06:45:44 to: _custom.scss
+[31m[0m[31m[0m[31m    error[0m gumby/gumby.scss (Line 30 of gumby/_custom.scss: Invalid CSS after "...er); min-height": expected "{", was "(3px*$larger);}")
+[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 06:47:40 to: _custom.scss
+[31m[0m[31m[0m[31m    error[0m gumby/gumby.scss (Line 30 of gumby/_custom.scss: Invalid CSS after "...er); min-height": expected "{", was "($larger);}")
+[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 06:48:50 to: _custom.scss
+[31m[0m[31m[0m[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 07:47:36 to: var/_settings.scss
+[31m[0m[31m[0m[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 07:48:54 to: var/_settings.scss
+[31m[0m[31m[0m[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 08:00:14 to: _custom.scss
+[31m[0m[31m[0m[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 08:01:09 to: _custom.scss
+[31m[0m[31m[0m[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 08:33:10 to: _custom.scss
+[31m[0m[31m[0m[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 08:34:18 to: _custom.scss
+[31m[0m[31m[0m[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 08:36:35 to: _custom.scss
+[31m[0m[31m[0m[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 08:38:08 to: _custom.scss
+[31m[0m[31m[0m[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 08:53:33 to: _custom.scss
+[31m[0m[31m[0m[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 08:57:22 to: _custom.scss
+[31m[0m[31m[0m[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 08:58:13 to: _custom.scss
+[31m[0m[31m[0m[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 06:13:02 to: _custom.scss
+[31m[0m[31m[0m[31m    error[0m gumby/gumby.scss (Line 10 of gumby/_custom.scss: Invalid CSS after "...x-width: 600px)": expected "{", was "#inner-nav li:n...")
+[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 06:14:35 to: _custom.scss
+[31m[0m[31m[0m[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 06:15:36 to: _custom.scss
+[31m[0m[31m[0m[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 06:16:23 to: _custom.scss
+[31m[0m[31m[0m[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 06:18:05 to: _custom.scss
+[31m[0m[31m[0m[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 06:19:11 to: _custom.scss
+[31m[0m[31m[0m[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 06:20:58 to: _custom.scss
+[31m[0m[31m[0m[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 06:22:24 to: _custom.scss
+[31m[0m[31m[0m[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 06:23:24 to: _custom.scss
+[31m[0m[31m[0m[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 06:37:35 to: _custom.scss
+[31m[0m[31m[0m[32midentical[0m ../css/gumby/gumby.css 
+>>> Change detected at 06:38:44 to: _custom.scss
+[31m[0m[31m[0m[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 06:44:42 to: _custom.scss
+[31m[0m[31m[0m[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 07:31:26 to: _custom.scss
+[31m[0m[31m[0m[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 07:32:29 to: _custom.scss
+[31m[0m[31m[0m[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 07:36:48 to: _custom.scss
+[31m[0m[31m[0m[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 07:38:26 to: _custom.scss
+[31m[0m[31m[0m[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 07:42:47 to: _custom.scss
+[31m[0m[31m[0m[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 07:44:36 to: _custom.scss
+[31m[0m[31m[0m[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 07:45:42 to: _custom.scss
+[31m[0m[31m[0m[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 07:47:10 to: _custom.scss
+[31m[0m[31m[0m[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 07:48:28 to: _custom.scss
+[31m[0m[31m[0m[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 07:52:47 to: _custom.scss
+[31m[0m[31m[0m[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 07:56:34 to: _custom.scss
+[31m[0m[31m[0m[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 07:57:54 to: _custom.scss
+[31m[0m[31m[0m[33moverwrite[0m ../css/gumby/gumby.css 
+>>> Change detected at 07:59:57 to: _custom.scss
+[31m[0m

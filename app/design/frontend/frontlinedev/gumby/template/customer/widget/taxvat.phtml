@@ -1,0 +1,12 @@
+<?php
+/**
+ * package      frontlinedev
+ * theme        gumby
+ * developer    Jason Tipton - Frontlinedev.com
+ * contact      jason@frontlinedev.com
+ */
+?>
+<?php /*
+<label for="<?php echo $this->getFieldId('taxvat')?>" class="inline <?php if ($this->isRequired()) echo 'required' ?>"><?php if ($this->isRequired()) echo '<em>*</em>' ?><?php echo $this->__('Tax/VAT number') ?></label>
+*/ ?>
+<input type="text" id="<?php echo $this->getFieldId('taxvat')?>" name="<?php echo $this->getFieldName('taxvat')?>" value="<?php echo $this->escapeHtml($this->getTaxvat()) ?>" title="<?php echo $this->__('Tax/VAT number') ?>" class="normal text input input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('taxvat') ?>" placeholder="<?php echo $this->__('Tax/VAT number') ?>" <?php echo $this->getFieldParams() ?> />

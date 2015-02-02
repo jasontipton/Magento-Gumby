@@ -1,0 +1,17 @@
+<?php
+/**
+ * package      frontlinedev
+ * theme        gumby
+ * developer    Jason Tipton - Frontlinedev.com
+ * contact      jason@frontlinedev.com
+ */
+?>
+<div class="product-options shaded" id="product-options-wrapper">
+    <?php echo $this->getChildHtml('', true, true);?>
+    <?php if ($this->hasRequiredOptions()):?>
+        <?php /*
+        <p class="required"><?php echo $this->__('* Required Fields') ?></p>
+        */ ?>
+    <?php endif;?>
+</div>
+

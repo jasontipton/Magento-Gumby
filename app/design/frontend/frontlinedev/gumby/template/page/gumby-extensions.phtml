@@ -1,0 +1,161 @@
+<?php
+/**
+ * package      frontlinedev
+ * theme        gumby
+ * developer    Jason Tipton - Frontlinedev.com
+ * contact      jason@frontlinedev.com
+ */
+ ?>
+<div class="row padding-medium">
+    <h1 class="lead">Responsive Images</h1>
+    <sub>Find out more at: <a href="http://gumbyframework.com/docs/extensions/" target="_blank">http://gumbyframework.com/docs/extensions/</a></sub>
+    <div class="row">
+        <div class="six columns">
+            <h2>Supports</h2>
+            <img 
+            gumby-default="<?php echo $this->getSkinUrl('images/gumby/img_silence_demo.jpg'); ?>" 
+            gumby-supports="webp|<?php echo $this->getSkinUrl('images/gumby/img_silence.webp'); ?>" 
+            gumby-media="@media only screen and (min-width: 960px)|<?php echo $this->getSkinUrl('images/gumby/img_silence-desktop.jpg'); ?>, @media only screen and (max-width: 767px)|<?php echo $this->getSkinUrl('images/gumby/img_silence-tablet.jpg'); ?>, @media only screen and (max-width: 320px)|<?php echo $this->getSkinUrl('images/gumby/img_silence-mobile.jpg'); ?>"  />
+        </div>
+        <div class="six columns">
+            <h2>Media</h2>
+            <img 
+            gumby-default="<?php echo $this->getSkinUrl('images/gumby/img_silence_demo.jpg'); ?>" 
+            gumby-media="only screen and (min-width: 960px)|<?php echo $this->getSkinUrl('images/gumby/img_silence-desktop.jpg'); ?>, only screen and (max-width: 767px)|<?php echo $this->getSkinUrl('images/gumby/img_silence-tablet.jpg'); ?>, only screen and (max-width: 620px)|<?php echo $this->getSkinUrl('images/gumby/img_silence-mobile.jpg'); ?>"  />
+        </div>
+    </div>
+</div>
+
+<hr />
+
+<div class="row padding-medium">
+  <div class="twelve columns">
+    <h1 class="lead">Responsive Comments</h1>
+    <div class="row" >
+        <div class="six columns" gumby-comment-media="(min-width: 768px)">
+            <!--<p class="alert primary">I was displayed at 768px!</p>-->
+        </div>
+    </div>
+    <div class="row">
+        <div class="six columns" gumby-comment-media="(min-width: 1000px)">
+            <!--<p class="alert secondary">I was displayed at 1000px!</p>-->
+        </div>
+    </div>
+    <div class="row">
+        <div class="six columns" gumby-comment-supports="webp">
+            <!--<p class="alert warning">I was displayed because you support Webp!</p>-->
+        </div>
+    </div>
+  </div>
+</div>
+
+<hr />
+
+<div class="row padding-medium">
+  <div class="twelve columns">
+    <h1 class="lead">InView</h1>
+    <div class="row padding-medium">
+        <div class="four columns">
+            <style type="text/css">
+                h4.example1 {
+                    text-align: center;
+                    color: white;
+                }
+
+                h4.example1.active {
+                   background: #3085d6;
+                }
+            </style>
+            <h4 class="inview example1">Example</h4>
+        </div>
+    </div>
+    <div class="row padding-medium">
+        <div class="four columns">
+            <style type="text/css">
+                h4.example2 {
+                    text-align: center;
+                    color: white;
+                    -webkit-transition: all 0.5s;
+                    -moz-transition: all 0.5s;
+                    -o-transition: all 0.5s;
+                    transition: all 0.5s;
+                }
+
+                h4.example2.onscreen {
+                    background: orange; 
+                }
+            </style>
+            <h4 class="inview example2" gumby-classname="onscreen" gumby-offset="50">Example 2</h4>
+        </div>
+    </div>
+    <div class="row padding-medium">
+        <div class="four columns">
+            <style type="text/css">
+                h4.example3 {
+                    text-align: center;
+                    color: white;
+                    background: white;
+                    @include transition(all .5s);
+                }
+                    
+                h4.example3.onscreen {
+                    background: #b83d78;
+                }
+                    
+                h4.example3.offbottom {
+                    background: #440000;
+                }
+                    
+                h4.example3.offtop {
+                    background: #1b0044;
+                }
+            </style>
+            <h4 class="inview example3" gumby-classname="onscreen|offbottom|offtop" gumby-offset="100">Example 3</h4>
+        </div>
+    </div>
+  </div>
+</div>
+
+<hr />
+
+<div class="row padding-medium">
+    <h1 class="lead">Shuffle</h1>
+    <div class="row" gumby-shuffle="only screen and (max-width: 860px) and (min-width: 768px)|2-1-0,only screen and (max-width: 767px)|1-0-2">
+        <div class="four columns">
+            <h2 class="shaded a-center">1</h2>
+        </div>
+        <div class="four columns">
+            <h2 class="shaded a-center">2</h2>
+        </div>
+        <div class="four columns">
+            <h2 class="shaded a-center">3</h2>
+        </div>
+    </div>
+</div>
+
+<hr />
+
+<div class="row padding-medium">
+  <div class="twelve columns">
+    <h1 class="lead">Parallax</h1>
+    <style type="text/css">
+        .example-grid .parallax {
+        width: 100%;
+        height: 300px;
+        background-image: url('/skin/frontend/frontlinedev/gumby/images/gumby/img_parallax_demo.jpg');
+        }
+    </style>
+    <div class="example-grid">
+        <div class="parallax" gumby-parallax="0.5"></div>
+    </div>
+  </div>
+</div>
+
+<hr />
+
+<div class="row padding-medium">
+  <div class="twelve columns">
+    <h1 class="lead">FitText</h1>
+    <h2 class="fittext" gumby-rate="0.8" gumby-sizes="14|60">Hello this text will resize to fill the available area</h2>
+  </div>
+</div>

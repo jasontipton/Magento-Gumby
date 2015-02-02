@@ -1,0 +1,12 @@
+<?php
+/**
+ * package      frontlinedev
+ * theme        gumby
+ * developer    Jason Tipton - Frontlinedev.com
+ * contact      jason@frontlinedev.com
+ */
+?>
+
+<?php if($this->getWishlist()->getItemsCount() && $this->getWishlist()->isSalable()): ?>
+	<div class="pretty medium info btn"><button type="button" title="<?php echo $this->__('Add All to Cart') ?>" onclick="addAllWItemsToCart()" class="button btn-add"><?php echo $this->__('Add All to Cart') ?></button></div>
+<?php endif;?>

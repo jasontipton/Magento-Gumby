@@ -1,0 +1,27 @@
+<?php
+/**
+ * package      frontlinedev
+ * theme        gumby
+ * developer    Jason Tipton - Frontlinedev.com
+ * contact      jason@frontlinedev.com
+ */
+
+/* @var Mage_Wishlist_Model_Item $item */
+$item = $this->getItem();
+$product = $item->getProduct();
+?>
+<div class="nine columns">
+	<h3 class="product-name"><a href="<?php echo $this->getProductUrl($item) ?>" title="<?php echo $this->escapeHtml($product->getName()) ?>"><?php echo $this->escapeHtml($product->getName()) ?></a></h3>
+	<div class="description std"><div class="inner"><?php echo $this->escapeHtml($this->stripTags($product->getShortDescription()));?></div></div>
+
+	<div class="field"><textarea class="input textarea" name="description[<?php echo $item->getWishlistItemId() ?>]" rows="3" title="<?php echo $this->__('Comment') ?>" placeholder="<?php echo $this->helper('wishlist')->defaultCommentString() ?>"><?php echo ($this->escapeHtml($item->getDescription() ? $item->getDescription() : '')) ?></textarea></div>
+
+
+
+	<?php if($this->getSortedChildren()): ?>
+	    <div class="item-manage">
+	    <?php foreach($this->getSortedChildren() as $childName):?>
+	        <?php echo $this->getChildHtml($childName, false);?>
+	    <?php endforeach;?>
+	    </div>
+	<?php endif; ?>

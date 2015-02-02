@@ -1,0 +1,24 @@
+<?php
+/**
+ * package      frontlinedev
+ * theme        gumby
+ * developer    Jason Tipton - Frontlinedev.com
+ * contact      jason@frontlinedev.com
+ */
+?>
+<?php
+/**
+ * Customer "Remember Me" template
+ *
+ * @var $this Mage_Persistent_Block_Form_Remember
+ */
+?>
+<li id="remember-me-box" class="field control">
+    <?php $rememberMeId = 'remember_me' . Mage::helper('core')->getRandomString(10); ?>
+    <label class="checkbox" for="<?php echo $rememberMeId; ?>">
+        <input type="checkbox" name="persistent_remember_me" class="checkbox" id="<?php echo $rememberMeId; ?>"<?php if ($this->isRememberMeChecked()): ?> checked="checked"<?php endif; ?> title="<?php echo $this->__('Remember Me') ?>" />
+    	<span onclick="click_option('<?php echo $rememberMeId; ?>')"></span>
+    	<p onclick="click_option('<?php echo $rememberMeId; ?>')"><?php echo $this->__('Remember Me') ?></p>
+	</label>
+	<a href="#" class="switch" gumby-trigger="#remember-me-popup"><?php echo $this->__('What\'s this?') ?></a>
+</li>

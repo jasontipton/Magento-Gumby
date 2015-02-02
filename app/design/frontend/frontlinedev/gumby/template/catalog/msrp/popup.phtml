@@ -1,0 +1,48 @@
+<?php
+/**
+ * package      frontlinedev
+ * theme        gumby
+ * developer    Jason Tipton - Frontlinedev.com
+ * contact      jason@frontlinedev.com
+ */
+?>
+<?php
+/**
+ * Template for MAP popup
+ *
+ */
+?>
+<?php if (Mage::helper('catalog')->isMsrpEnabled()): ?>
+
+<div class="modal map-popup" id="map-popup">
+    <div class="content">
+        <a id="map-popup-close" class="close switch map-popup-close" gumby-trigger="|#map-popup"><i class="icon-cancel" /></i></a>
+        <div class="map-popup-arrow"></div>
+        <div class="map-popup-heading"><h2 id="map-popup-heading"></h2></div>
+        <div class="map-popup-content" id="map-popup-content">
+            <div class="map-popup-checkout">
+                <form action="" method="POST" id="product_addtocart_form_from_popup">
+                    <input type="hidden" name="product" class="product_id" value="" id="map-popup-product-id" />
+                    <div class="additional-addtocart-box">
+                        <?php echo $this->getChildHtml(); ?>
+                    </div>
+                    <div class="pretty medium primary btn"><button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" id="map-popup-button" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><i class="icon-basket"></i><?php echo $this->__('Add to Cart') ?></div>
+                </form>
+            </div>
+            <div class="map-popup-msrp" id="map-popup-msrp-box"><strong><?php echo $this->__('Price'); ?>:</strong> <span style="text-decoration:line-through;" id="map-popup-msrp"></span></div>
+            <div class="map-popup-price" id="map-popup-price-box"><strong><?php echo $this->__('Actual Price'); ?>:</strong> <span id="map-popup-price"></span></div>
+            <script type="text/javascript">
+            //<![CDATA[
+                document.observe("dom:loaded", Catalog.Map.bindProductForm);
+            //]]>
+            </script>
+        </div>
+        <div class="map-popup-text" id="map-popup-text"><?php echo Mage::helper('catalog')->getMsrpExplanationMessage(); ?></div>
+        <div class="map-popup-text" id="map-popup-text-what-this"><?php echo Mage::helper('catalog')->getMsrpExplanationMessageWhatsThis(); ?></div>
+    </div>
+</div>
+
+
+
+
+<?php endif; ?>

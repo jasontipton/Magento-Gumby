@@ -1,0 +1,370 @@
+<?xml version="1.0"?>
+<!--
+    FrontLineDev Gumby XML overrides
+-->
+<layout version="0.1.0">
+
+    <default>
+        <reference name="head">
+            <!-- Remove IE6 fixes -->
+            <action method="removeItem"><type>skin_js</type><name>js/ie6.js</name></action>
+            <action method="removeItem"><type>js</type><name>lib/ds-sleight.js</name></action>
+            <!-- Remove widgets.css, see skin/frontend/frontlinedev/gumby/css/gumby/styles.css -->
+            <action method="removeItem"><type>skin_css</type><name>css/widgets.css</name></action>
+            <!-- Remove styles.css, see skin/frontend/frontlinedev/gumby/css/gumby/styles.css -->
+            <action method="removeItem"><type>skin_css</type><name>css/styles.css</name></action>            
+            <!-- Remove menu.js when using Gumby menu, use menu.js only when using Magento default menu -->
+            <action method="removeItem"><type>js</type><name>varien/menu.js</name></action>
+
+
+            <!-- Microsoft rendering fixes -->
+            <!-- Use the .htaccess and remove these lines to avoid edge case issues.
+                More info: h5bp.com/b/378 -->
+            <!-- thanks to https://github.com/gpmd/magento-responsive-theme -->
+            <block type="core/text" name="ie_rendering_fixes">
+                <action method="setText">
+                    <text><![CDATA[
+                        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+                        <meta http-equiv="cleartype" content="on">
+                    ]]></text>
+                </action>
+            </block>
+
+            <!-- Mobile display metas -->
+            <block type="core/text" name="mobile_display_metas">
+                <action method="setText">
+                    <text><![CDATA[
+                        <meta name="HandheldFriendly" content="True">
+                        <meta name="MobileOptimized" content="320">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+                    ]]></text>
+                </action>
+            </block>
+
+            <!-- Adding several JS from RWD theme -->
+            <!-- JQuery required by Gumby -->
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/gumby/libs/jquery-1.10.1.min.js</name>
+            </action>
+            <!-- Modernizr required by Gumby -->
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/gumby/libs/modernizr-2.6.2.min.js</name>
+            </action>
+            <!-- jQuery no conflict -->
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/no-conflict.js</name>
+            </action>
+
+            <!-- adding Gumby stylesheet -->
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/gumby/gumby.css</name>
+            </action>
+            <!-- adding custom stylesheet -->
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/gumby/style.css</name>
+            </action>
+
+        </reference>
+
+        <reference name="before_body_end">
+            <!-- adding js block to footer
+            http://stackoverflow.com/questions/15984022/magento-add-js-to-the-footer#answer-19558385 -->
+            <block type="page/html_head" name="jsfooter" as="jsfooter" before="before_body_end" template="page/html/jsfooter.phtml">
+
+
+                <!-- DEVELOPMENT MODE js files are separated -->
+                <!-- Include gumby.modified.js followed by UI modules, followed by extensions, followed by gumby.init.js -->
+                <action method="addItem">
+                    <type>skin_js</type>
+                    <name>js/gumby/libs/gumby.modified.js</name>
+                    <params/>
+                </action>
+                <action method="addItem">
+                    <type>skin_js</type>
+                    <name>js/gumby/libs/ui/gumby.retina.js</name>
+                    <params/>
+                </action>
+                <action method="addItem">
+                    <type>skin_js</type>
+                    <name>js/gumby/libs/ui/gumby.fixed.js</name>
+                    <params/>
+                </action>
+                <action method="addItem">
+                    <type>skin_js</type>
+                    <name>js/gumby/libs/ui/gumby.skiplink.js</name>
+                    <params/>
+                </action>
+                <action method="addItem">
+                    <type>skin_js</type>
+                    <name>js/gumby/libs/ui/gumby.toggleswitch.js</name>
+                    <params/>
+                </action>
+                <action method="addItem">
+                    <type>skin_js</type>
+                    <name>js/gumby/libs/ui/gumby.checkbox-modified.js</name>
+                    <params/>
+                </action>  
+                <action method="addItem">
+                    <type>skin_js</type>
+                    <name>js/gumby/libs/ui/gumby.radiobtn.js</name>
+                    <params/>
+                </action>
+                <action method="addItem">
+                    <type>skin_js</type>
+                    <name>js/gumby/libs/ui/gumby.tabs.js</name>
+                    <params/>
+                </action>
+                <action method="addItem">
+                    <type>skin_js</type>
+                    <name>js/gumby/libs/ui/gumby.navbar.js</name>
+                    <params/>
+                </action>
+                <action method="addItem">
+                    <type>skin_js</type>
+                    <name>js/gumby/libs/ui/jquery.validation.js</name>
+                    <params/>
+                </action>
+                <action method="addItem">
+                    <type>skin_js</type>
+                    <name>js/gumby/libs/extensions/gumby.comments.js</name>
+                    <params/>
+                </action>
+                <action method="addItem">
+                    <type>skin_js</type>
+                    <name>js/gumby/libs/extensions/gumby.fittext-modified.js</name>
+                    <params/>
+                </action>
+                <action method="addItem">
+                    <type>skin_js</type>
+                    <name>js/gumby/libs/extensions/gumby.images-modified.js</name>
+                    <params/>
+                </action>
+                <action method="addItem">
+                    <type>skin_js</type>
+                    <name>js/gumby/libs/extensions/gumby.inview.js</name>
+                    <params/>
+                </action>        
+                <action method="addItem">
+                    <type>skin_js</type>
+                    <name>js/gumby/libs/extensions/gumby.parallax-modified.js</name>
+                    <params/>
+                </action>
+                <action method="addItem">
+                    <type>skin_js</type>
+                    <name>js/gumby/libs/extensions/gumby.shuffle-modified.js</name>
+                    <params/>
+                </action>
+                <action method="addItem">
+                    <type>skin_js</type>
+                    <name>js/gumby/libs/gumby.init.js</name>
+                    <params/>
+                </action>
+                <!-- END DEVELOPMENT MODE -->
+
+                <!-- PRODUCTION MODE js files are combined -->
+                <!-- Includes gumby.modified.js, UI modules, and gumby.init.js -->
+                <!-- Google's recommended deferred loading of JS -->
+                <!--
+                <action method="setText">
+                    <text>
+                        <![CDATA[<script type="text/javascript">
+                            function downloadJSAtOnload() {
+                            var element = document.createElement("script");
+                            element.src = "skin/frontend/frontlinedev/gumby/js/gumby/libs/gumby.min-modified.extensions.js";
+                            document.body.appendChild(element);
+                            }
+                            if (window.addEventListener)
+                            window.addEventListener("load", downloadJSAtOnload, false);
+                            else if (window.attachEvent)
+                            window.attachEvent("onload", downloadJSAtOnload);
+                            else window.onload = downloadJSAtOnload;
+                        </script>]]>
+                    </text>
+                </action>
+                -->
+                <!-- END PRODUCTION MODE -->
+
+                <action method="addItem">
+                    <type>skin_js</type>
+                    <name>js/gumby/plugins.js</name>
+                    <params/>
+                </action>
+                <action method="addItem">
+                    <type>skin_js</type>
+                    <name>js/gumby/main.js</name>
+                    <params/>
+                </action>
+
+            </block>
+        </reference>
+
+        <!-- Left Column Permanent Callout override to catalog.xml lines 49-53 -->
+        <reference name="left">
+            <action method="unsetChild"><name>left.permanent.callout</name></action>
+            <block type="core/template" name="left.permanent.callout" template="callouts/left_col.phtml">
+                <action method="setImgSrc"><src>images/gumby/img_silence_demo.jpg</src></action>
+                <action method="setImgAlt" translate="alt" module="catalog"><alt>Alt text for the left column permanent callout.</alt></action>
+                <action method="setLinkUrl"><url>checkout/cart</url></action>
+            </block>
+        </reference>
+
+
+        <!-- Right Column Permanent Callout override to catalog.xml lines 57-60 -->
+        <reference name="right">
+            <action method="unsetChild"><name>right.permanent.callout</name></action>
+            <block type="core/template" name="right.permanent.callout" template="callouts/right_col.phtml">
+                <action method="setImgSrc"><src>images/gumby/img_silence_demo.jpg</src></action>
+                <action method="setImgAlt" translate="alt" module="catalog"><alt>Alt text for the right column permanent callout.</alt></action>
+            </block>
+        </reference>
+
+
+        <!-- footer_links block has been removed and replaced with custom code in 
+        app/design/frontend/PACKAGE/THEME/template/page/html/footer.phtml -->
+        <remove name="footer_links" />
+
+
+        <!-- The following statements can be uncommented to remove sidebar blocks -->
+        <!-- remove paypal logo from sidebar -->
+        <remove name="paypal.partner.right.logo" />
+
+        <!-- remove Recently Viewed Products -->
+        <!--
+        <remove name="right.reports.product.viewed"/>
+        -->
+
+        <!-- remove Right Permanent Callout -->
+        <!--
+        <remove name="right.permanent.callout"/>
+        -->
+
+        <!-- remove Left Permanent Callout -->
+        <!--
+        <remove name="left.permanent.callout"/>
+        -->
+
+        <!-- remove Cart from sidebar-->
+        <!--
+        <remove name="cart_sidebar"/>
+        -->
+        
+        <!-- remove Related Products sidebar-->
+        <!--
+        <remove name="catalog.product.related"/>
+        -->
+        
+        <!-- remove Wishlist from sidebar-->
+        <!--
+        <remove name="wishlist_sidebar"/>
+        -->
+
+        <!-- remove Compare Items from sidebar-->
+        <!--
+        <remove name="catalog.compare.sidebar"/>
+        -->
+
+        <!-- remove Compared Products-->
+        <!--
+        <remove name="right.reports.product.compared"/>
+        -->
+        
+        <!-- remove Layered Navigation-->
+        <!--
+        <remove name="catalog.leftnav"/>
+        -->
+        
+        <!-- remove Community Poll-->
+        <!--
+        <remove name="right.poll"/>
+        -->
+
+        <!-- remove Popular Tags-->
+        <!--
+        <remove name="tags_popular"/>
+        -->
+
+        <!-- remove Newsletter from sidebar -->
+        <remove name="left.newsletter"/>
+
+        <reference name="footer">
+            <!-- Adding Newsletter to footer -->
+            <block type="newsletter/subscribe" name="newsletter" as="newsletter" template="newsletter/subscribe.phtml" before="-" />
+            <!-- Adding Language Switcher to footer -->
+            <block type="page/switch" name="store_language" as="store_language" template="page/switch/languages.phtml" />
+        </reference>
+
+    </default>
+
+    <catalog_product_view>
+        <!-- Adding OpenGraph data to product pages -->
+        <!-- http://trafficmotion.com/add-open-graph-cards-products-magento/ -->
+        <reference name="head">
+            <block type="catalog/product_view" name="product.opengraph">
+                <action method="setTemplate">
+                <template>catalog/product/opengraph.phtml</template>
+                </action>
+            </block>
+        </reference>
+    </catalog_product_view>
+
+    <!-- Search Results page -->
+    <catalogsearch_result_index>
+      <reference name="head">
+         <action method="setRobots"><value>NOINDEX,NOFOLLOW</value></action>
+      </reference>
+   </catalogsearch_result_index>
+
+    <!-- Advanced Search page -->
+    <catalogsearch_advanced_result>
+      <reference name="head">
+         <action method="setRobots"><value>NOINDEX,NOFOLLOW</value></action>
+      </reference>
+   </catalogsearch_advanced_result>    
+
+    <!-- Product Tag List - View All -->
+    <tag_list_index>
+      <reference name="head">
+         <action method="setRobots"><value>NOINDEX,NOFOLLOW</value></action>
+      </reference>
+    </tag_list_index>
+
+    <!-- Review Details page -->
+    <review_product_view>
+              <reference name="head">
+             <action method="setRobots"><value>NOINDEX,NOFOLLOW</value></action>
+          </reference>
+    </review_product_view>
+
+    <!-- Checkout (Onepage) Success -->
+    <checkout_onepage_success>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+        </reference>
+    </checkout_onepage_success>
+
+    <!-- Checkout (Onepage) Failure -->
+    <checkout_onepage_failure>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+        </reference>
+    </checkout_onepage_failure>
+
+    <!-- Checkout (Multishipping) Success -->
+    <checkout_multishipping_success>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+        </reference>        
+    </checkout_multishipping_success>
+
+</layout>

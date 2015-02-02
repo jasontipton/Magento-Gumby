@@ -1,0 +1,21 @@
+<?php
+/**
+ * package      frontlinedev
+ * theme        gumby
+ * developer    Jason Tipton - Frontlinedev.com
+ * contact      jason@frontlinedev.com
+ */
+?>
+
+<?php $_wishlistItem = $this->getWishlistItem(); ?>
+<?php $_wishlistSubmitUrl = $this->helper('wishlist')->getUpdateUrl($_wishlistItem); ?>
+<div class="add-to-links">
+<?php if ($this->helper('wishlist')->isAllow()) : ?>
+    <div class="link-wishlist pretty small secondary btn icon-right icon-list-add"><a href="<?php echo $_wishlistSubmitUrl ?>" onclick="productAddToCartForm.submitLight(this, this.href); return false;" class="link-wishlist" title="<?php echo $this->__('Update Wishlist') ?>"><?php echo $this->__('Update Wishlist') ?></a></div>
+<?php endif; ?>
+<?php $_product = $this->getProduct(); ?>
+<?php $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product); ?>
+<?php if ($_compareUrl) : ?>
+    <div class="link-compare pretty small secondary btn icon-right icon-flow-parallel"><a href="<?php echo $_compareUrl ?>" class="link-compare" title="<?php echo $this->__('Add to Compare') ?>"><?php echo $this->__('Compare') ?></a></div>
+<?php endif; ?>
+</div>

@@ -1,0 +1,44 @@
+<?php 
+/**
+ * package      frontlinedev
+ * theme        gumby
+ * developer    Jason Tipton - Frontlinedev.com
+ * contact      jason@frontlinedev.com
+ */
+ ?>
+
+<!-- call Gumby JS files -->
+<?php echo $this->getCssJsHtml() ?>
+
+<!-- only display To Top after defined px scroll down -->
+<script>
+jQuery(function() {
+    jQuery(window).scroll(function() {
+        if(jQuery(this).scrollTop() > 300) {
+            jQuery('#back_top').fadeIn();    
+        } else {
+            jQuery('#back_top').fadeOut();
+        }	
+	});    
+});
+</script>
+
+<!-- fix for onclick for Gumby UI elements -->
+<script>
+    function click_option(opt) {
+        jQuery('#'+opt).click();
+    }
+</script>
+
+<!-- Gumby close modal on click outside -->
+<!-- https://gist.github.com/PunchRockgroin/8389188 --> 
+<script>
+jQuery('.modal').on(Gumby.click, function(e){
+    var container = jQuery('.content');
+    if((!container.is(e.target) // if the target of the click isn't the container...
+        && container.has(e.target).length === 0))  // ... nor a descendant of the container
+      {
+        jQuery('.modal .close').trigger('gumby.trigger');
+      }
+});
+</script>

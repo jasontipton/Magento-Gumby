@@ -1,0 +1,63 @@
+<?php
+/**
+ * package      frontlinedev
+ * theme        gumby
+ * developer    Jason Tipton - Frontlinedev.com
+ * contact      jason@frontlinedev.com
+ */
+?>
+<?php
+/**
+ * Last order sidebar
+ *
+ * @see Mage_Sale_Block_Reorder_Sidebar
+ */
+?>
+<?php $_items = $this->getItems()?>
+<?php if($_items): ?>
+<div class="block block-reorder">
+    <div class="block-title">
+        <strong><span><?php echo $this->__('My Orders') ?></span></strong>
+    </div>
+    <form method="post" action="<?php echo $this->getFormActionUrl() ?>" id="reorder-validate-detail">
+        <?php echo $this->getBlockHtml('formkey'); ?>
+        <div class="block-content">
+            <p class="block-subtitle"><?php echo $this->__('Last Ordered Items') ?></p>
+            <ul id="cart-sidebar-reorder">
+            <?php $_showAddButtonFlag = false ?>
+            <?php foreach ($_items as $_item): ?>
+                <li class="field item">
+                    <label class="checkbox" for="reorder-item-<?php echo $_item->getId() ?>">
+                        <?php if ($this->isItemAvailableForReorder($_item)): ?>
+                            <?php $_showAddButtonFlag = true ?>
+                            <input type="checkbox" name="order_items[]" id="reorder-item-<?php echo $_item->getId() ?>" value="<?php echo $_item->getId() ?>" title="<?php echo $this->__('Add to Cart') ?>" class="checkbox validate-one-required-by-name" />
+                            <script type="text/javascript">
+                                //<![CDATA[
+                                    $('reorder-item-<?php echo $_item->getId() ?>').advaiceContainer = 'cart-sidebar-reorder-advice-container';
+                                //]]>
+                            </script>
+                        <?php endif; ?>
+                        <span onclick="click_option('reorder-item-<?php echo $_item->getId() ?>')"></span>
+                        <p class="product-name"><a href="<?php echo $_item->getProduct()->getProductUrl() ?>"><?php echo $this->escapeHtml($_item->getName()) ?></a></p>
+                    </label>
+                </li>
+            <?php endforeach; ?>
+            </ul>
+            <script type="text/javascript">decorateList('cart-sidebar-reorder')</script>
+            <div id="cart-sidebar-reorder-advice-container"></div>
+            <div class="actions">
+                <?php if ($_showAddButtonFlag): ?>
+                    <div class="pretty medium primary btn"><button type="submit" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart"><i class="icon-basket"></i><?php echo $this->__('Add to Cart') ?></div>
+                <?php endif; ?>
+                <a class="clearfix" href="<?php echo $this->getUrl('customer/account') ?>"><?php echo $this->__('View All'); ?></a>
+            </div>
+        </div>
+    </form>
+</div>
+<?php echo $this->getPagerHtml(); ?>
+<script type="text/javascript">
+//<![CDATA[
+    var reorderFormDetail = new VarienForm('reorder-validate-detail');
+//]]>
+</script>
+<?php endif ?>

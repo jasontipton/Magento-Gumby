@@ -1,0 +1,74 @@
+<?php
+/**
+ * package      frontlinedev
+ * theme        gumby
+ * developer    Jason Tipton - Frontlinedev.com
+ * contact      jason@frontlinedev.com
+ */
+/* @var $this Mage_Wishlist_Block_Customer_Wishlist */
+?>
+<?php if ($this->helper('wishlist')->isAllow()) : ?>
+    <div class="my-wishlist">
+        <div class="page-title title-buttons">
+            <?php if ($this->helper('wishlist')->isRssAllow() && $this->hasWishlistItems()): ?>
+                <a href="<?php echo $this->helper('wishlist')->getRssUrl($this->getWishlistInstance()->getId()); ?>" class="link-rss"><i class="icon-rss"></i><?php echo $this->__('RSS Feed') ?></a>
+            <?php endif; ?>
+            <h1><?php echo $this->getTitle(); ?></h1>
+        </div>
+        <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+
+        <form id="wishlist-view-form" action="<?php echo $this->getUrl('*/*/update', array('wishlist_id' => $this->getWishlistInstance()->getId())) ?>" method="post">
+            <?php echo $this->getChildHtml('top'); ?>
+            <fieldset>
+                <?php if ($this->hasWishlistItems()): ?>
+                        <?php echo $this->getBlockHtml('formkey');?>
+                        <?php $this->getChild('items')->setItems($this->getWishlistItems()); ?>
+                        <?php echo $this->getChildHtml('items');?>
+                        <script type="text/javascript">decorateTable('wishlist-table')</script>
+                <?php else: ?>
+                    <p class="wishlist-empty"><?php echo $this->__('You have no items in your wishlist.') ?></p>
+                <?php endif ?>
+                <div class="buttons-set buttons-set2">
+                    <?php echo $this->getChild('control_buttons')->toHtml();?>
+                </div>
+            </fieldset>
+        </form>
+
+        <form id="wishlist-allcart-form" action="<?php echo $this->getUrl('*/*/allcart') ?>" method="post">
+            <?php echo $this->getBlockHtml('formkey') ?>
+            <div class="no-display">
+                <input type="hidden" name="wishlist_id" id="wishlist_id" value="<?php echo $this->getWishlistInstance()->getId() ?>" />
+                <input type="hidden" name="qty" id="qty" value="" />
+            </div>
+        </form>
+
+        <script type="text/javascript">
+        //<![CDATA[
+            var wishlistForm = new Validation($('wishlist-view-form'));
+            var wishlistAllCartForm = new Validation($('wishlist-allcart-form'));
+
+            function calculateQty() {
+                var itemQtys = new Array();
+                $$('#wishlist-view-form .qty').each(
+                    function (input, index) {
+                        var idxStr = input.name;
+                        var idx = idxStr.replace( /[^\d.]/g, '' );
+                        itemQtys[idx] = input.value;
+                    }
+                );
+
+                $$('#qty')[0].value = JSON.stringify(itemQtys);
+            }
+
+            function addAllWItemsToCart() {
+                calculateQty();
+                wishlistAllCartForm.form.submit();
+            }
+        //]]>
+        </script>
+    </div>
+    <?php echo $this->getChildHtml('bottom'); ?>
+    <div class="buttons-set">
+        <p class="back-link"><a href="<?php echo $this->escapeUrl($this->getBackUrl()) ?>"><small>&laquo; </small><?php echo $this->__('Back') ?></a></p>
+    </div>
+<?php endif ?>

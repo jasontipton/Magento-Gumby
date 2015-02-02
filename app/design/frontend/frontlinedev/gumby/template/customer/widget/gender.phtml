@@ -1,0 +1,23 @@
+<?php
+/**
+ * package      frontlinedev
+ * theme        gumby
+ * developer    Jason Tipton - Frontlinedev.com
+ * contact      jason@frontlinedev.com
+ */
+?>
+<label for="<?php echo $this->getFieldId('gender')?>" class="<?php if ($this->isRequired()) echo 'required' ?>"><?php if ($this->isRequired()) echo '<em>*</em>' ?><?php echo $this->__('Gender') ?></label>
+<div class="field">
+	<div class="picker">
+	    <select id="<?php echo $this->getFieldId('gender')?>" name="<?php echo $this->getFieldName('gender')?>" title="<?php echo $this->__('Gender') ?>"<?php if ($this->isRequired()):?> class="validate-select"<?php endif; ?> <?php echo $this->getFieldParams() ?>>
+	        <?php $options = Mage::getResourceSingleton('customer/customer')->getAttribute('gender')->getSource()->getAllOptions();?>
+	        <?php $value = $this->getGender();?>
+	        	<option value="#" selected="selected"><?php echo $this->__('Gender') ?></option>
+	        <?php foreach ($options as $option):?>
+	        	<?php if ($option['value']!='') { ?>
+	            <option value="<?php echo $option['value'] ?>"><?php echo $option['label'] ?></option>
+	        	<?php } ?>
+	        <?php endforeach;?>
+	    </select>
+	</div>
+</div>

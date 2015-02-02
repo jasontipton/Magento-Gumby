@@ -1,0 +1,68 @@
+<?php
+/**
+ * package      frontlinedev
+ * theme        gumby
+ * developer    Jason Tipton - Frontlinedev.com
+ * contact      jason@frontlinedev.com
+ */
+?>
+<div class="footer-container shaded padding-medium">
+    <footer class="row footer">
+		<div class="four columns">
+		    <h5 class="lead">
+		        <strong><span><?php echo $this->__('Primary') ?></span></strong>
+		    </h5>
+		    <ul>
+		        <li><a href="/about-magento-demo-store/">About Us</a></li>
+		        <li><a href="/contacts/">Contact Us</a></li>
+		        <li><a href="/customer-service/">Customer Service</a></li>
+		        <li><a href="/privacy-policy-cookie-restriction-mode/">Privacy Policy</a></li>
+		    </ul>
+		</div>
+		<div class="four columns">
+		    <h5 class="lead">
+		        <strong><span><?php echo $this->__('Seondary') ?></span></strong>
+		    </h5>
+		    <ul>
+				<li><a href="/catalog/seo_sitemap/category/">Site Map</a></li>
+				<li><a href="/catalogsearch/term/popular/">Search Terms</a></li>
+				<li><a href="/catalogsearch/advanced/">Advanced Search</a></li>
+				<li><a href="/sales/guest/form/">Orders and Returns</a></li>
+			</ul>
+		</div>
+		<div class="four columns">
+		    <h5 class="lead">
+		        <strong><span><?php echo $this->__('Tertiary') ?></span></strong>
+		    </h5>
+		    <ul>
+				<li><a href="#" class="switch" gumby-trigger="#modal-language">Language Switcher</a></li>
+				<?php echo $this->getChildHtml('store_language') ?>
+				<li><a href="#" class="switch" gumby-trigger="#modal-store">Store Selector</a></li>
+				<?php echo $this->getChildHtml('store_switcher') ?>
+				<li><a href="/rss/">RSS</a></li>
+			</ul>
+			<?php echo $this->getChildHtml('newsletter') ?>
+		</div>
+	</footer>
+</div>
+<div class="sub-footer-container padding-medium">
+	<div class="row">
+		<div class="six columns">
+			<?php /*
+			<?php echo $this->getChildHtml() ?>
+			*/ ?>
+			<p class="bugs a-center"><?php echo $this->__('Help Us to Keep Magento Healthy') ?><br /><a href="http://www.magentocommerce.com/bug-tracking" onclick="this.target='_blank'"><?php echo $this->__('Report All Bugs') ?></a> <?php echo $this->__('(ver. %s)', Mage::getVersion()) ?></p>
+		</div>
+		<div class="six columns">
+			<p class="bugs a-center">Gumby Framework is &quot;Developed with love<br />by your friends at <a href="http://www.digitalsurgeons.com/" target="_blank">Digital Surgeons</a>&quot;<br />Read <a href="http://gumbyframework.com/docs/" target="_blank">the documentation</a> &amp; Fork it on <a href="https://github.com/GumbyFramework/Gumby" target="_blank">Github</a></p>
+		</div>
+	</div>
+	<div class="row padding-medium a-center">
+		<address><?php echo $this->getCopyright() ?></address>
+		<p class="a-center"><i class="icon-address"></i><?php echo nl2br(Mage::getStoreConfig('general/store_information/address')); ?><br /><i class="icon-phone"></i><?php echo $storePhone = Mage::getStoreConfig('general/store_information/phone'); ?></p>
+	</div>
+</div>
+
+<p id="back_top" class="skiplink medium default" style="display:none;">
+    <a href="#" gumby-goto="top" gumby-duration="1000"><i class="icon-up-open-big"></i></a>
+</p>

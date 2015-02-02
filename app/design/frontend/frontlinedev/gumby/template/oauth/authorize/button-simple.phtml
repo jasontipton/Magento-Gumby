@@ -1,0 +1,42 @@
+<?php
+/**
+ * package      frontlinedev
+ * theme        gumby
+ * developer    Jason Tipton - Frontlinedev.com
+ * contact      jason@frontlinedev.com
+ */
+?>
+<?php
+/**
+ * "Grant Access" button
+ *
+ * @var $this Mage_Oauth_Block_Authorize_ButtonBaseAbstract
+ */
+$logo = $this->getSkinUrl('images/logo-large.gif', array('_area' => 'adminhtml', '_package' => 'default'));
+?>
+<div class="login-container">
+    <div class="login-box">
+        <div class="page-title">
+            <h1><?php echo $this->__('Authorize application') ?></h1>
+        </div>
+        <div class="form-box">
+            <div>
+                <div id="messages">
+                    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+                </div>
+                <?php if (!$this->getHasException()) : ?>
+                    <h2><?php echo $this->__('<strong>%s</strong> requests access to your account', $this->escapeHtml($this->getConsumer()->getName())); ?></h2>
+                    <p><?php echo $this->__('After authorization application will have access to you account.'); ?></p>
+                    <form id="oauth_authorize_confirm" action="<?php echo $this->getConfirmUrl() ?>" method="get">
+                        <input type="hidden" name="oauth_token" value="<?php echo $this->escapeHtml($this->getToken()) ?>">
+                        <div class="pretty medium secondary btn"><button  type="submit" class="button" title="<?php echo $this->__('Authorize') ?>"><?php echo $this->__('Authorize') ?></button></div>
+                    </form>
+                    <form id="oauth_authorize_reject" action="<?php echo $this->getRejectUrl() ?>" method="get">
+                        <input type="hidden" name="oauth_token" value="<?php echo $this->escapeHtml($this->getToken()) ?>">
+                        <div class="pretty small info btn"><button type="submit" class="button" title="<?php echo $this->__('Reject') ?>"><?php echo $this->__('Reject') ?></button></div>
+                    </form>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+</div>

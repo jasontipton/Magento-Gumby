@@ -1,0 +1,35 @@
+<?php
+/**
+ * package      frontlinedev
+ * theme        gumby
+ * developer    Jason Tipton - Frontlinedev.com
+ * contact      jason@frontlinedev.com
+ */
+?>
+<?php
+/**
+ * Store switcher template
+ *
+ * @see Mage_Core_Block_Store_Switcher
+ */
+?>
+<?php if(count($this->getGroups())>1): ?>
+    <?php /* Store switcher modal */ ?>
+    <div class="modal" id="modal-store">
+        <div class="content">
+            <a class="close switch" gumby-trigger="|#modal-store"><i class="icon-cancel" /></i></a>
+            <div class="store-switcher">
+                <div class="field">
+                    <ul>
+                        <h4><?php echo $this->__('Select Store') ?></h4>
+                        <p><?php echo $this->__('Our site supports multiple stores.  Choose a website to view.') ?></p>
+                        <?php foreach ($this->getGroups() as $_group): ?>
+                            <li><a href="<?php echo $_group->getHomeUrl() ?>"><?php echo $this->escapeHtml($_group->getName()) ?></a></li>
+                        <?php endforeach; ?>
+                        </select>
+                    </ul>                    
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>

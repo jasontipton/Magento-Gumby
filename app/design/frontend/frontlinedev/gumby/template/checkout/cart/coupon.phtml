@@ -1,0 +1,41 @@
+<?php
+/**
+ * package      frontlinedev
+ * theme        gumby
+ * developer    Jason Tipton - Frontlinedev.com
+ * contact      jason@frontlinedev.com
+ */
+?>
+<form id="discount-coupon-form" action="<?php echo $this->getUrl('checkout/cart/couponPost') ?>" method="post">
+    <div class="discount">
+        <h2><?php echo $this->__('Discount Codes') ?></h2>
+        <div class="field discount-form">
+            <?php /*
+                <label class="inline" for="coupon_code"><?php echo $this->__('Enter Coupon Code') ?></label>
+            */ ?>
+            <input type="hidden" name="remove" id="remove-coupone" value="0" />
+            <input class="normal text input input-text" id="coupon_code" name="coupon_code" type="text" value="<?php echo $this->escapeHtml($this->getCouponCode()) ?>" placeholder="<?php echo $this->__('Enter Coupon Code') ?>" />
+            <div class="buttons-set">
+                <div class="pretty medium info btn"><button type="button" title="<?php echo $this->__('Apply Coupon') ?>" class="button" onclick="discountForm.submit(false)" value="<?php echo $this->__('Apply Coupon') ?>"><?php echo $this->__('Apply Coupon') ?></button></div>
+                <?php if(strlen($this->getCouponCode())): ?>
+                    &nbsp; <div class="pretty medium info btn"><button type="button" title="<?php echo $this->__('Cancel Coupon') ?>" class="button" onclick="discountForm.submit(true)" value="<?php echo $this->__('Cancel Coupon') ?>"><?php echo $this->__('Cancel Coupon') ?></button></div>
+                <?php endif;?>
+            </div>
+        </div>
+    </div>
+</form>
+<script type="text/javascript">
+//<![CDATA[
+var discountForm = new VarienForm('discount-coupon-form');
+discountForm.submit = function (isRemove) {
+    if (isRemove) {
+        $('coupon_code').removeClassName('required-entry');
+        $('remove-coupone').value = "1";
+    } else {
+        $('coupon_code').addClassName('required-entry');
+        $('remove-coupone').value = "0";
+    }
+    return VarienForm.prototype.submit.bind(discountForm)();
+}
+//]]>
+</script>

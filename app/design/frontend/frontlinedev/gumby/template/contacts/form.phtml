@@ -1,0 +1,55 @@
+<?php
+/**
+ * package      frontlinedev
+ * theme        gumby
+ * developer    Jason Tipton - Frontlinedev.com
+ * contact      jason@frontlinedev.com
+ */
+?>
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+<div class="page-title">
+    <h1><?php echo Mage::helper('contacts')->__('Contact Us') ?></h1>
+</div>
+<form action="<?php echo $this->getFormAction(); ?>" id="contactForm" method="post">
+    <div class="fieldset">
+        <h2 class="legend"><?php echo Mage::helper('contacts')->__('Contact Information') ?></h2>
+        <ul class="form-list">
+            <li class="field">
+                <?php /*
+                <label for="name" class="required"><em>*</em><?php echo Mage::helper('contacts')->__('Name') ?></label>
+                */ ?>
+                <input name="name" id="name" title="<?php echo Mage::helper('contacts')->__('Name') ?>" value="<?php echo $this->escapeHtml($this->helper('contacts')->getUserName()) ?>" class="normal text input input-text required-entry" type="text" placeholder="<?php echo Mage::helper('contacts')->__('Name') ?>" />
+            </li>
+            <li class="field">
+                <?php /*
+                <label for="email" class="required"><em>*</em><?php echo Mage::helper('contacts')->__('Email') ?></label>
+                */ ?>
+                <input name="email" id="email" title="<?php echo Mage::helper('contacts')->__('Email') ?>" value="<?php echo $this->escapeHtml($this->helper('contacts')->getUserEmail()) ?>" class="normal text input input-text required-entry validate-email" type="text" placeholder="<?php echo Mage::helper('contacts')->__('Email') ?>" />
+            </li>
+            <li class="field">
+                <?php /*
+                <label for="telephone"><?php echo Mage::helper('contacts')->__('Telephone') ?></label>
+                */ ?>
+                <input name="telephone" id="telephone" title="<?php echo Mage::helper('contacts')->__('Telephone') ?>" value="" class="normal text input input-text" type="text" placeholder="<?php echo Mage::helper('contacts')->__('Telephone') ?>" />
+            </li>
+            <li class="field">
+                <?php /*
+                <label for="comment" class="required"><em>*</em><?php echo Mage::helper('contacts')->__('Comment') ?></label>
+                */ ?>
+                <textarea name="comment" id="comment" title="<?php echo Mage::helper('contacts')->__('Comment') ?>" class="wide input textarea required-entry input-text" rows="4" placeholder="<?php echo Mage::helper('contacts')->__('Comment') ?>"></textarea>
+            </li>
+        </ul>
+    </div>
+    <div class="buttons-set">
+        <?php /*
+        <p class="required"><?php echo Mage::helper('contacts')->__('* Required Fields') ?></p>
+        */ ?>
+        <input type="text" name="hideit" id="hideit" value="" style="display:none !important;" />
+        <div class="pretty medium info btn"><button type="submit" title="<?php echo Mage::helper('contacts')->__('Submit') ?>" class="button"><?php echo Mage::helper('contacts')->__('Submit') ?></button></div>
+    </div>
+</form>
+<script type="text/javascript">
+//<![CDATA[
+    var contactForm = new VarienForm('contactForm', true);
+//]]>
+</script>
