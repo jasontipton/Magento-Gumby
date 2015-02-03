@@ -12,13 +12,13 @@ Specs
 [Optimal Configuration](https://github.com/jasontipton/Magento-Gumby#optimal-configuration "Optimal Configuration") 
 [Magento Extension](https://github.com/jasontipton/Magento-Gumby#magento-extension "Magento Extension")  
 [Using the CMS Demo Pages](https://github.com/jasontipton/Magento-Gumby#using-the-cms-demo-pages "Using the CMS Demo Pages")  
-[Roll Credits](https://github.com/jasontipton/Magento-Gumby#credits "Roll Credits")  
+[Roll Credits](https://github.com/jasontipton/Magento-Gumby#roll-credits "Roll Credits")  
 
 
 ##[The Awesome News](#the-awesome-news)
 All the work integrating the Gumby Framework into Magento is already complete within the theme.  No, part of Magento or Gumby has been left out.  The Gumby UI page has been included to serve as a reference when building your own theme.  All of the optional Gumby Extensions (Responsive Images, Responsive Comments, InView, Shuffle, Parallax, and FitText) are built in and can be seen at the Gumby Extension page.  A full page with responsive updates has been added of all the default Widgets in Magento.
 
-##[Why Gumby + Magento](#why-gumby-magento)
+##[Why Gumby Magento](#why-gumby-magento)
 This theme was built to fill a gap serious frontend developers needed solved.  For e-commerce Magento developers who want to build a responsive website the current options are to either use CE 1.9's RWD theme, which comes with its own inherent limitations as there is no responsive grid system to use for CMS pages or other admin controled content, or purchase a pre-made theme on one of the theme market places.  While there is nothing wrong with purchasing a pre-made theme they are often heavily edited for the purpose of that theme's design in which case if the project they are purchased for has a destictly different design goal it can take a large number of hours to completely modify the purchased theme to produce the desired project result.
 
 Instead the goal with the Magento Gumby theme is to provide Magento in a mostly unaltered format while adding the Gumby framework as a design layer in a way that added responsive capabilities and updated the UI elements.  
@@ -54,9 +54,10 @@ Magento Widgets - http://dev.frontlinedev.com/magento-widgets
 The theme was built based on Magento Community Edition version 1.9's default/blank theme. This provided the most stripped down version of Magento but still included all of its award winning e-comm features.  Previous versions of Magento may or may not be compatible.  If you have a website running an older verion (less than CE 1.9) of Magento and want the theme modified for use with your site contact me (jason@frontlinedev.com)
 
 ##[How To Install](#how-to-install)
-The Magento Gumby theme is a base theme meant to be built upon.  Follow the steps below and any modifications you make to the theme will not only survive upgrades but will follow Magento's fall back theme heirarchy.
+The Magento Gumby theme is a base theme meant to be built upon.  Follow the steps below and any modifications you make to the theme will not only survive upgrades but will follow Magento's fall back theme heirarchy.  
 
-###Optimal Configuration (#optimal-configuation)
+
+##[Optimal Configuration](#optimal-configuation)
 Download the theme zip file from Github, move it to the root of your Magento installation where you see Magento folders such as app and skin (often times this will be your public_html folder), and unzip the file.  This will add the theme files to the necessary paths app/design/frontend, skin/frontend, app/code/local.  Note - app/code/local is for the optional Magento extension (read below for more details). 
 Now create your own theme name folders listed below as YOUR_THEME:
 app/design/frontend/frontlinedev/YOUR_THEME/etc  
@@ -84,7 +85,7 @@ This instructs Magento to first look for theme files in YOUR_THEME and if it doe
 
 Last, be sure to clear Magento caches (System -> Cache Management).  The theme should now be live.
 
-This is the preferred method as it not only prepares your site for Magento upgrades but also preserves the gumby theme for any future updates all without overwriting your custom theme.
+This is the preferred method as it not only prepares your site for Magento upgrades but also preserves the gumby theme for any future updates all without overwriting your custom theme.  
 
 
 ##[Magento Extension](#magento-extension)
