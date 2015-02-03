@@ -1,0 +1,8 @@
+<config>
+    <modules>
+        <Frontlinedev_Gumby>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Frontlinedev_Gumby>
+    </modules>
+</config>
