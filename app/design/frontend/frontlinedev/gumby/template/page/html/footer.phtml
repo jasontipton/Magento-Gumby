@@ -59,7 +59,7 @@
 	</div>
 	<div class="row padding-medium a-center">
 		<address><?php echo $this->getCopyright() ?></address>
-		<p class="a-center"><i class="icon-address"></i><?php echo nl2br(Mage::getStoreConfig('general/store_information/address')); ?><br /><i class="icon-phone"></i><?php echo $storePhone = Mage::getStoreConfig('general/store_information/phone'); ?></p>
+		<p class="a-center"><i class="icon-address"></i><?php echo nl2br(Mage::getStoreConfig('general/store_information/address')); ?><br /><i class="icon-phone"></i><a href="tel:<?php echo preg_replace('/[^0-9]/','',$storePhone = Mage::getStoreConfig('general/store_information/phone')); ?>"><?php echo $storePhone = Mage::getStoreConfig('general/store_information/phone'); ?></a></p>
 	</div>
 </div>
 
