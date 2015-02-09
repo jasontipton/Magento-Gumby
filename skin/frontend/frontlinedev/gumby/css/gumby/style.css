@@ -65,7 +65,7 @@ blockquote    {}
 q:before,
 q:after       {}
 small,big     {}
-sup           {}
+sup           { vertical-align: super; font-size: smaller; }
 
 /* Lists */
 ul,ol         {}
